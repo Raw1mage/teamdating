@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1269" viewBox="-10.00 -2.00 99.32 70.00" role="img">
+<style>
+.step{fill:#fff;stroke:#111;stroke-width:.14}.step-inner{fill:none;stroke:#111;stroke-width:.08}
+.action{fill:#fff;stroke:#111;stroke-width:.14}.action-inner{fill:none;stroke:#111;stroke-width:.08}.gate{stroke:#111;stroke-width:.16}
+.edge{fill:none;stroke:#111;stroke-width:.05;stroke-linecap:round;stroke-linejoin:round}.edge-arrow{marker-end:url(#arrow)}
+.flyover-mask{stroke:#fff;stroke-width:.12;stroke-linecap:round}
+.flyover{fill:none;stroke:#111;stroke-width:.05;stroke-linecap:round}
+.junction{fill:#111;stroke:#111;stroke-width:0}.branch-junction{fill:#fff;stroke:#111;stroke-width:.08}
+.assoc{stroke:#111;stroke-width:.05}.label{font:bold .7px 'Times New Roman', 'BiauKai', 'DFKai-SB', serif;text-anchor:middle;dominant-baseline:middle}
+.action-label{font:.55px 'Times New Roman', 'BiauKai', 'DFKai-SB', serif;text-anchor:middle;dominant-baseline:middle}.gate-label{font:italic .55px 'Times New Roman', 'BiauKai', 'DFKai-SB', serif;text-anchor:start;dominant-baseline:middle}.gate-label-left{font:italic .55px 'Times New Roman', 'BiauKai', 'DFKai-SB', serif;text-anchor:end;dominant-baseline:middle}
+</style>
+<defs><marker id="arrow" markerWidth="0.4" markerHeight="0.4" refX="0.36" refY="0.2" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 0.4 0.2 L 0 0.4 z" fill="#111"/></marker></defs>
+<rect x="-10.00" y="-2.00" width="99.32" height="70.00" fill="white"/>
+<path class="edge edge-arrow" data-edge-id="edge:S0O1G4I1" data-segment-ids="S0O1G4I1:1S" d="M 44.16 7.00 L 44.16 13.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G4O1S1I1" data-segment-ids="G4O1S1I1:1S" d="M 44.16 13.00 L 44.16 15.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S1O1G1I1" data-segment-ids="S1O1G1I1:1S" d="M 44.16 18.00 L 44.16 20.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G1O1S2I1" data-segment-ids="G1O1S2I1:1S" d="M 66.24 20.00 L 66.24 24.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G1O2S3I1" data-segment-ids="G1O2S3I1:1S" d="M 44.16 20.00 L 44.16 24.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S2O1G5I1" data-segment-ids="S2O1G5I1:1S" d="M 66.24 27.00 L 66.24 55.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G5O1S10I1" data-segment-ids="G5O1S10I1:1S" d="M 44.16 55.00 L 44.16 57.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S3O1G2I1" data-segment-ids="S3O1G2I1:1S" d="M 44.16 27.00 L 44.16 29.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G2O1S4I1" data-segment-ids="G2O1S4I1:1S" d="M 22.08 29.00 L 22.08 33.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G2O2S6I1" data-segment-ids="G2O2S6I1:1S" d="M 44.16 29.00 L 44.16 33.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S4O1S5I1" data-segment-ids="S4O1S5I1:1S S4O1S5I1:2E S4O1S5I1:3S S4O1S5I1:4W S4O1S5I1:5S" d="M 22.08 36.00 L 22.08 37.50 Q 22.08 38.00 22.58 38.00 L 64.74 38.00 Q 65.24 38.00 65.24 38.50 L 65.24 43.50 Q 65.24 44.00 64.74 44.00 L 22.58 44.00 Q 22.08 44.00 22.08 44.50 L 22.08 48.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S5O1G5I2" data-segment-ids="S5O1G5I2:1S" d="M 22.08 51.00 L 22.08 55.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S6O1G3I1" data-segment-ids="S6O1G3I1:1S" d="M 44.16 36.00 L 44.16 40.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G3O1S7I1" data-segment-ids="G3O1S7I1:1S" d="M 0.00 40.00 L 0.00 48.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G3O2S8I1" data-segment-ids="G3O2S8I1:1S" d="M 44.16 40.00 L 44.16 48.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S7O1G4I2" data-segment-ids="S7O1G4I2:1S S7O1G4I2:2W S7O1G4I2:3N S7O1G4I2:4E S7O1G4I2:5S" d="M 0.00 51.00 L 0.00 52.50 Q 0.00 53.00 -0.50 53.00 L -3.50 53.00 Q -4.00 53.00 -4.00 52.50 L -4.00 9.50 Q -4.00 9.00 -3.50 9.00 L 39.66 9.00 Q 40.16 9.00 40.16 9.50 L 40.16 13.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S8O1G5I3" data-segment-ids="S8O1G5I3:1S" d="M 44.16 51.00 L 44.16 55.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S10O1S0I1" data-segment-ids="S10O1S0I1:1S S10O1S0I1:2W S10O1S0I1:3N S10O1S0I1:4E S10O1S0I1:5S" d="M 44.16 60.00 L 44.16 63.50 Q 44.16 64.00 43.66 64.00 L -5.50 64.00 Q -6.00 64.00 -6.00 63.50 L -6.00 2.50 Q -6.00 2.00 -5.50 2.00 L 43.66 2.00 Q 44.16 2.00 44.16 2.50 L 44.16 4.00"/>
+<rect class="step" x="42.16" y="4.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<rect class="step-inner" x="42.41" y="4.25" width="3.50" height="2.50" rx="0.22" ry="0.22"/>
+<text class="label" x="44.16" y="5.50">0</text>
+<rect class="step" x="42.16" y="15.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="44.16" y="16.50">1</text>
+<rect class="step" x="64.24" y="24.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="66.24" y="25.50">2</text>
+<rect class="step" x="42.16" y="24.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="44.16" y="25.50">3</text>
+<rect class="step" x="20.08" y="33.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="22.08" y="34.50">4</text>
+<rect class="step" x="20.08" y="48.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="22.08" y="49.50">5</text>
+<rect class="step" x="42.16" y="33.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="44.16" y="34.50">6</text>
+<rect class="step" x="-2.00" y="48.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="0.00" y="49.50">7</text>
+<rect class="step" x="42.16" y="48.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="44.16" y="49.50">8</text>
+<rect class="step" x="42.16" y="57.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="44.16" y="58.50">10</text>
+<line class="assoc" x1="46.16" y1="5.50" x2="47.16" y2="5.50"/>
+<rect class="action" x="47.16" y="4.07" width="16.08" height="2.86"/>
+<text class="action-label" x="55.20" y="5.50"><tspan x="55.20" dy="0">等待登入請求（姓名 + 選擇性 email）</tspan></text>
+<line class="assoc" x1="46.16" y1="16.50" x2="47.16" y2="16.50"/>
+<rect class="action" x="47.16" y="15.07" width="16.08" height="2.86"/>
+<text class="action-label" x="55.20" y="16.50"><tspan x="55.20" dy="0">查同名候選 cands = UsersByName(name)</tspan></text>
+<line class="assoc" x1="68.24" y1="25.50" x2="69.24" y2="25.50"/>
+<rect class="action" x="69.24" y="24.07" width="16.08" height="2.86"/>
+<text class="action-label" x="77.28" y="25.09"><tspan x="77.28" dy="0">無撞名：CreateUser(name, email?)</tspan><tspan x="77.28" dy="0.82">建立新身分並發 cookie token</tspan></text>
+<line class="assoc" x1="46.16" y1="25.50" x2="47.16" y2="25.50"/>
+<rect class="action" x="47.16" y="24.07" width="16.08" height="2.86"/>
+<text class="action-label" x="55.20" y="25.09"><tspan x="55.20" dy="0">撞名：判定提供的 email 是</tspan><tspan x="55.20" dy="0.82">否匹配某同名候選的 email</tspan></text>
+<line class="assoc" x1="24.08" y1="34.50" x2="25.08" y2="34.50"/>
+<rect class="action" x="25.08" y="33.07" width="16.08" height="2.86"/>
+<text class="action-label" x="33.12" y="33.68"><tspan x="33.12" dy="0">產一次性 verifyToken(crypto/rand 256bit)</tspan><tspan x="33.12" dy="0.82">，存 pending{uid,emailHash,expiresAt=now+15m}</tspan><tspan x="33.12" dy="0.82">（記憶體），net/smtp 寄認證連結</tspan></text>
+<line class="assoc" x1="24.08" y1="49.50" x2="25.08" y2="49.50"/>
+<rect class="action" x="25.08" y="48.07" width="16.08" height="2.86"/>
+<text class="action-label" x="33.12" y="48.68"><tspan x="33.12" dy="0">等待使用者按連結：/verify-email/confirm?t=&lt;token&gt;，</tspan><tspan x="33.12" dy="0.82">查 pending[hash(t)] 未過期未用 → AddToken(uid, 本裝置</tspan><tspan x="33.12" dy="0.82">新token) + 標 pending 已用 + 本裝置 cookie 設為該 uid</tspan></text>
+<line class="assoc" x1="46.16" y1="34.50" x2="47.16" y2="34.50"/>
+<rect class="action" x="47.16" y="33.07" width="16.08" height="2.86"/>
+<text class="action-label" x="55.20" y="34.09"><tspan x="55.20" dy="0">撞名不同人：通知撞名者選擇——改名</tspan><tspan x="55.20" dy="0.82">（輸入不撞名的名字）或強制加後綴 -N</tspan></text>
+<line class="assoc" x1="2.00" y1="49.50" x2="3.00" y2="49.50"/>
+<rect class="action" x="3.00" y="48.07" width="16.08" height="2.86"/>
+<text class="action-label" x="11.04" y="49.09"><tspan x="11.04" dy="0">使用者輸入新名字 → 回步1 重新查</tspan><tspan x="11.04" dy="0.82">同名（可能仍撞名，遞迴至不撞名）</tspan></text>
+<line class="assoc" x1="46.16" y1="49.50" x2="47.16" y2="49.50"/>
+<rect class="action" x="47.16" y="48.07" width="16.08" height="2.86"/>
+<text class="action-label" x="55.20" y="49.09"><tspan x="55.20" dy="0">store 鎖內分配最小未占用後綴 -N（唯</tspan><tspan x="55.20" dy="0.82">一性檢查），CreateUser(name-N, email?)</tspan></text>
+<line class="assoc" x1="46.16" y1="58.50" x2="47.16" y2="58.50"/>
+<rect class="action" x="47.16" y="57.07" width="16.08" height="2.86"/>
+<text class="action-label" x="55.20" y="58.09"><tspan x="55.20" dy="0">身分就緒：cookie token 已設，前</tspan><tspan x="55.20" dy="0.82">端名單姓名唯一（不變量成立）</tspan></text>
+<line class="gate" x1="38.16" y1="13.00" x2="46.16" y2="13.00"/>
+<line class="gate" x1="42.16" y1="20.00" x2="68.24" y2="20.00"/>
+<line class="gate" x1="20.08" y1="55.00" x2="68.24" y2="55.00"/>
+<line class="gate" x1="20.08" y1="29.00" x2="46.16" y2="29.00"/>
+<line class="gate" x1="-2.00" y1="40.00" x2="46.16" y2="40.00"/>
+<line class="gate" x1="43.16" y1="9.00" x2="45.16" y2="9.00" data-label-kind="condition-stub" data-edge-id="edge:S0O1G4I1" data-arrow-id="condition_stub:T1" data-transition-id="T1" data-condition-stub-id="condition_stub:T1"/>
+<text class="gate-label" x="45.56" y="9.00" data-label-kind="condition-stub" data-edge-id="edge:S0O1G4I1" data-arrow-id="condition_stub:T1" data-transition-id="T1" data-condition-stub-id="condition_stub:T1"><tspan x="45.56" dy="0">收到 /api/register 請求</tspan></text>
+<line class="gate" x1="65.24" y1="22.00" x2="67.24" y2="22.00" data-label-kind="condition-stub" data-edge-id="edge:G1O1S2I1" data-arrow-id="condition_stub:T2" data-transition-id="T2" data-condition-stub-id="condition_stub:T2"/>
+<text class="gate-label" x="67.64" y="22.00" data-label-kind="condition-stub" data-edge-id="edge:G1O1S2I1" data-arrow-id="condition_stub:T2" data-transition-id="T2" data-condition-stub-id="condition_stub:T2"><tspan x="67.64" dy="0">len(cands)==0 → 步2</tspan></text>
+<line class="gate" x1="43.16" y1="22.00" x2="45.16" y2="22.00" data-label-kind="condition-stub" data-edge-id="edge:G1O2S3I1" data-arrow-id="condition_stub:T3" data-transition-id="T3" data-condition-stub-id="condition_stub:T3"/>
+<text class="gate-label-left" x="42.76" y="22.00" data-label-kind="condition-stub" data-edge-id="edge:G1O2S3I1" data-arrow-id="condition_stub:T3" data-transition-id="T3" data-condition-stub-id="condition_stub:T3"><tspan x="42.76" dy="0">len(cands)&gt;0 → 步3</tspan></text>
+<line class="gate" x1="65.24" y1="53.00" x2="67.24" y2="53.00" data-label-kind="condition-stub" data-edge-id="edge:S2O1G5I1" data-arrow-id="condition_stub:T4" data-transition-id="T4" data-condition-stub-id="condition_stub:T4"/>
+<text class="gate-label" x="67.64" y="53.00" data-label-kind="condition-stub" data-edge-id="edge:S2O1G5I1" data-arrow-id="condition_stub:T4" data-transition-id="T4" data-condition-stub-id="condition_stub:T4"><tspan x="67.64" dy="0">建立成功</tspan></text>
+<line class="gate" x1="21.08" y1="31.00" x2="23.08" y2="31.00" data-label-kind="condition-stub" data-edge-id="edge:G2O1S4I1" data-arrow-id="condition_stub:T5" data-transition-id="T5" data-condition-stub-id="condition_stub:T5"/>
+<text class="gate-label-left" x="20.68" y="31.00" data-label-kind="condition-stub" data-edge-id="edge:G2O1S4I1" data-arrow-id="condition_stub:T5" data-transition-id="T5" data-condition-stub-id="condition_stub:T5"><tspan x="20.68" dy="0">email 匹配某 cand.Email → 步4 (合併認證)</tspan></text>
+<line class="gate" x1="43.16" y1="31.00" x2="45.16" y2="31.00" data-label-kind="condition-stub" data-edge-id="edge:G2O2S6I1" data-arrow-id="condition_stub:T6" data-transition-id="T6" data-condition-stub-id="condition_stub:T6"/>
+<text class="gate-label" x="45.56" y="31.00" data-label-kind="condition-stub" data-edge-id="edge:G2O2S6I1" data-arrow-id="condition_stub:T6" data-transition-id="T6" data-condition-stub-id="condition_stub:T6"><tspan x="45.56" dy="0">email 不匹配 or 候選無 email → 步6 (撞名不同人)</tspan></text>
+<line class="gate" x1="21.08" y1="46.00" x2="23.08" y2="46.00" data-label-kind="condition-stub" data-edge-id="edge:S4O1S5I1" data-arrow-id="condition_stub:T7" data-transition-id="T7" data-condition-stub-id="condition_stub:T7"/>
+<text class="gate-label" x="23.48" y="45.32" data-label-kind="condition-stub" data-edge-id="edge:S4O1S5I1" data-arrow-id="condition_stub:T7" data-transition-id="T7" data-condition-stub-id="condition_stub:T7"><tspan x="23.48" dy="0">寄信成功 → 回『認證</tspan><tspan x="23.48" dy="0.68">信已寄出』（寄信失</tspan><tspan x="23.48" dy="0.68">敗則 fail-loud，不放行）</tspan></text>
+<line class="gate" x1="21.08" y1="53.00" x2="23.08" y2="53.00" data-label-kind="condition-stub" data-edge-id="edge:S5O1G5I2" data-arrow-id="condition_stub:T8" data-transition-id="T8" data-condition-stub-id="condition_stub:T8"/>
+<text class="gate-label-left" x="20.68" y="52.32" data-label-kind="condition-stub" data-edge-id="edge:S5O1G5I2" data-arrow-id="condition_stub:T8" data-transition-id="T8" data-condition-stub-id="condition_stub:T8"><tspan x="20.68" dy="0">token 有效未過期未用 → 綁定成功（取得管</tspan><tspan x="20.68" dy="0.68">理權+同一人）; 過期/已用/無效 → 認證失</tspan><tspan x="20.68" dy="0.68">敗，回步6 讓使用者改走不同人路徑或重試</tspan></text>
+<line class="gate" x1="-1.00" y1="42.00" x2="1.00" y2="42.00" data-label-kind="condition-stub" data-edge-id="edge:G3O1S7I1" data-arrow-id="condition_stub:T9" data-transition-id="T9" data-condition-stub-id="condition_stub:T9"/>
+<text class="gate-label-left" x="-1.40" y="41.66" data-label-kind="condition-stub" data-edge-id="edge:G3O1S7I1" data-arrow-id="condition_stub:T9" data-transition-id="T9" data-condition-stub-id="condition_stub:T9"><tspan x="-1.40" dy="0">選改名</tspan><tspan x="-1.40" dy="0.68">→ 步7</tspan></text>
+<line class="gate" x1="43.16" y1="42.00" x2="45.16" y2="42.00" data-label-kind="condition-stub" data-edge-id="edge:G3O2S8I1" data-arrow-id="condition_stub:T10" data-transition-id="T10" data-condition-stub-id="condition_stub:T10"/>
+<text class="gate-label" x="45.56" y="42.00" data-label-kind="condition-stub" data-edge-id="edge:G3O2S8I1" data-arrow-id="condition_stub:T10" data-transition-id="T10" data-condition-stub-id="condition_stub:T10"><tspan x="45.56" dy="0">選加後綴 → 步8</tspan></text>
+<line class="gate" x1="39.16" y1="11.00" x2="41.16" y2="11.00" data-label-kind="condition-stub" data-edge-id="edge:S7O1G4I2" data-arrow-id="condition_stub:T11" data-transition-id="T11" data-condition-stub-id="condition_stub:T11"/>
+<text class="gate-label-left" x="38.76" y="11.00" data-label-kind="condition-stub" data-edge-id="edge:S7O1G4I2" data-arrow-id="condition_stub:T11" data-transition-id="T11" data-condition-stub-id="condition_stub:T11"><tspan x="38.76" dy="0">提交新名字</tspan></text>
+<line class="gate" x1="43.16" y1="53.00" x2="45.16" y2="53.00" data-label-kind="condition-stub" data-edge-id="edge:S8O1G5I3" data-arrow-id="condition_stub:T12" data-transition-id="T12" data-condition-stub-id="condition_stub:T12"/>
+<text class="gate-label-left" x="42.76" y="53.00" data-label-kind="condition-stub" data-edge-id="edge:S8O1G5I3" data-arrow-id="condition_stub:T12" data-transition-id="T12" data-condition-stub-id="condition_stub:T12"><tspan x="42.76" dy="0">後綴分配成功且姓名唯一</tspan></text>
+<line class="gate" x1="43.16" y1="62.00" x2="45.16" y2="62.00" data-label-kind="condition-stub" data-edge-id="edge:S10O1S0I1" data-arrow-id="condition_stub:T13" data-transition-id="T13" data-condition-stub-id="condition_stub:T13"/>
+<text class="gate-label" x="45.56" y="62.00" data-label-kind="condition-stub" data-edge-id="edge:S10O1S0I1" data-arrow-id="condition_stub:T13" data-transition-id="T13" data-condition-stub-id="condition_stub:T13"><tspan x="45.56" dy="0">本次登入流程完成，回初始態等下一次請求</tspan></text>
+</svg>

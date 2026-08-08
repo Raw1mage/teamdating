@@ -1,0 +1,102 @@
+<svg width="2069.1" height="955.8" viewBox="-402.6 -210.0 2069.1 955.8" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="black" /></marker>
+<marker id="call_arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 M 0 2 L 6 5 L 0 8" fill="none" stroke="black" stroke-width="1" /></marker>
+</defs>
+<rect x="-402.6" y="-210.0" width="2069.1" height="955.8" fill="white" />
+<rect x="130.0" y="120.0" width="200.0" height="160.0" stroke="black" fill="white" stroke-width="1.5" data-id="A1" />
+<text x="230.0" y="180.4" text-anchor="middle" font-size="25" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A1" >A1</text>
+<text x="230.0" y="226.1" text-anchor="middle" font-size="27" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A1" >管理身分與名冊</text>
+<rect x="500.0" y="120.0" width="200.0" height="160.0" stroke="black" fill="white" stroke-width="1.5" data-id="A2" />
+<text x="600.0" y="158.0" text-anchor="middle" font-size="23" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A2" >A2</text>
+<text x="600.0" y="200.8" text-anchor="middle" font-size="25" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A2" >管理提案</text>
+<text x="600.0" y="247.7" text-anchor="middle" font-size="25" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A2" >生命週期</text>
+<rect x="894.0" y="120.0" width="200.0" height="160.0" stroke="black" fill="white" stroke-width="1.5" data-id="A3" />
+<text x="994.0" y="179.9" text-anchor="middle" font-size="26" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A3" >A3</text>
+<text x="994.0" y="227.0" text-anchor="middle" font-size="28" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A3" >管理可選項</text>
+<rect x="130.0" y="500.0" width="200.0" height="160.0" stroke="black" fill="white" stroke-width="1.5" data-id="A4" />
+<text x="230.0" y="559.9" text-anchor="middle" font-size="26" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A4" >A4</text>
+<text x="230.0" y="607.0" text-anchor="middle" font-size="28" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A4" >聚合投票</text>
+<rect x="500.0" y="500.0" width="200.0" height="160.0" stroke="black" fill="white" stroke-width="1.5" data-id="A5" />
+<text x="600.0" y="559.9" text-anchor="middle" font-size="26" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A5" >A5</text>
+<text x="600.0" y="607.0" text-anchor="middle" font-size="28" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A5" >投射即時視圖</text>
+<rect x="894.0" y="500.0" width="200.0" height="160.0" stroke="black" fill="white" stroke-width="1.5" data-id="A6" />
+<text x="994.0" y="559.9" text-anchor="middle" font-size="26" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A6" >A6</text>
+<text x="994.0" y="607.0" text-anchor="middle" font-size="28" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A6" >裁決授權</text>
+<rect x="40.0" y="0.0" width="1184.0" height="735.8" stroke="black" fill="none" stroke-width="2" />
+<rect x="321.0" y="-200.0" width="622.0" height="110.0" stroke="black" fill="white" stroke-width="1.5" data-id="A0" />
+<text x="632.0" y="-159.0" text-anchor="middle" font-size="14" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A0" >A0</text>
+<text x="632.0" y="-129.0" text-anchor="middle" font-size="16" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A0" >多人線上旅行日期共訂系統（提案 → 可選項 → 複選投票）｜GO 標準庫零依賴實作</text>
+<line x1="321.0" y1="-200.0" x2="40.0" y2="0.0" stroke="red" stroke-dasharray="5,5" stroke-width="1.0" opacity="0.6" />
+<line x1="943.0" y1="-200.0" x2="1224.0" y2="0.0" stroke="red" stroke-dasharray="5,5" stroke-width="1.0" opacity="0.6" />
+<line x1="321.0" y1="-90.0" x2="40.0" y2="735.8" stroke="red" stroke-dasharray="5,5" stroke-width="1.0" opacity="0.6" />
+<line x1="943.0" y1="-90.0" x2="1224.0" y2="735.8" stroke="red" stroke-dasharray="5,5" stroke-width="1.0" opacity="0.6" />
+<path d="M 700.0 200.0 L 894.0 200.0" stroke="black" stroke-width="1.2" data-arrow-id="AR11" data-waypoints="700.0,200.0 894.0,200.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 330.0 620.0 L 500.0 620.0" stroke="black" stroke-width="1.2" data-arrow-id="AR21" data-waypoints="330.0,620.0 500.0,620.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 1094.0 226.7 L 1164.0 226.7 Q 1174.0 226.7 1174.0 236.7 L 1174.0 360.0 Q 1174.0 370.0 1164.0 370.0 L 100.0 370.0 Q 90.0 370.0 90.0 380.0 L 90.0 543.3 Q 90.0 553.3 100.0 553.3 L 130.0 553.3" stroke="black" stroke-width="1.2" data-arrow-id="AR16" data-waypoints="1094.0,226.7 1174.0,226.7 1174.0,370.0 90.0,370.0 90.0,553.3 130.0,553.3" marker-end="url(#arrow)" fill="none" />
+<path d="M 1094.0 173.3 L 1124.0 173.3 Q 1134.0 173.3 1134.0 183.3 L 1134.0 320.0 Q 1134.0 330.0 1124.0 330.0 L 453.3 330.0 Q 443.3 330.0 443.3 340.0 L 443.3 530.0 Q 443.3 540.0 453.3 540.0 L 500.0 540.0" stroke="black" stroke-width="1.2" data-arrow-id="AR17" data-waypoints="1094.0,173.3 1134.0,173.3 1134.0,330.0 443.3,330.0 443.3,540.0 500.0,540.0" marker-end="url(#arrow)" fill="none" />
+<path d="M -10.0 200.0 L 130.0 200.0" stroke="black" stroke-width="1.2" data-arrow-id="AR1" data-waypoints="-10.0,200.0 130.0,200.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 230.0 84.2 L 230.0 120.0" stroke="black" stroke-width="1.2" data-arrow-id="AR2" data-waypoints="230.0,84.2 230.0,120.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 230.0 315.8 L 230.0 280.0" stroke="black" stroke-width="1.2" data-arrow-id="AR3" data-waypoints="230.0,315.8 230.0,280.0" marker-end="url(#arrow)" fill="none" />
+<path d="M -10.0 78.2 L 376.7 78.2 Q 386.7 78.2 386.7 88.2 L 386.7 190.0 Q 386.7 200.0 396.7 200.0 L 500.0 200.0" stroke="black" stroke-width="1.2" data-arrow-id="AR7" data-waypoints="-10.0,78.2 386.7,78.2 386.7,200.0 500.0,200.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 600.0 315.8 L 600.0 280.0" stroke="black" stroke-width="1.2" data-arrow-id="AR9" data-waypoints="600.0,315.8 600.0,280.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 700.0 173.3 L 754.7 173.3 Q 764.7 173.3 764.7 163.3 L 764.7 88.2 Q 764.7 78.2 774.7 78.2 L 1274.0 78.2" stroke="black" stroke-width="1.2" data-arrow-id="AR10" data-waypoints="700.0,173.3 764.7,173.3 764.7,78.2 1274.0,78.2" marker-end="url(#arrow)" fill="none" />
+<path d="M -10.0 40.0 L 819.3 40.0 Q 829.3 40.0 829.3 50.0 L 829.3 163.3 Q 829.3 173.3 839.3 173.3 L 894.0 173.3" stroke="black" stroke-width="1.2" data-arrow-id="AR12" data-waypoints="-10.0,40.0 829.3,40.0 829.3,173.3 894.0,173.3" marker-end="url(#arrow)" fill="none" />
+<path d="M 994.0 315.8 L 994.0 280.0" stroke="black" stroke-width="1.2" data-arrow-id="AR15" data-waypoints="994.0,315.8 994.0,280.0" marker-end="url(#arrow)" fill="none" />
+<path d="M -10.0 606.7 L 130.0 606.7" stroke="black" stroke-width="1.2" data-arrow-id="AR18" data-waypoints="-10.0,606.7 130.0,606.7" marker-end="url(#arrow)" fill="none" />
+<path d="M 230.0 695.8 L 230.0 660.0" stroke="black" stroke-width="1.2" data-arrow-id="AR20" data-waypoints="230.0,695.8 230.0,660.0" marker-end="url(#arrow)" fill="none" />
+<path d="M -10.0 450.0 L 376.7 450.0 Q 386.7 450.0 386.7 460.0 L 386.7 570.0 Q 386.7 580.0 396.7 580.0 L 500.0 580.0" stroke="black" stroke-width="1.2" data-arrow-id="AR22" data-waypoints="-10.0,450.0 386.7,450.0 386.7,580.0 500.0,580.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 600.0 464.2 L 600.0 500.0" stroke="black" stroke-width="1.2" data-arrow-id="AR23" data-waypoints="600.0,464.2 600.0,500.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 600.0 695.8 L 600.0 660.0" stroke="black" stroke-width="1.2" data-arrow-id="AR24" data-waypoints="600.0,695.8 600.0,660.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 700.0 580.0 L 754.7 580.0 Q 764.7 580.0 764.7 570.0 L 764.7 460.0 Q 764.7 450.0 774.7 450.0 L 1274.0 450.0" stroke="black" stroke-width="1.2" data-arrow-id="AR25" data-waypoints="700.0,580.0 764.7,580.0 764.7,450.0 1274.0,450.0" marker-end="url(#arrow)" fill="none" />
+<path d="M -10.0 410.0 L 819.3 410.0 Q 829.3 410.0 829.3 420.0 L 829.3 570.0 Q 829.3 580.0 839.3 580.0 L 894.0 580.0" stroke="black" stroke-width="1.2" data-arrow-id="AR26" data-waypoints="-10.0,410.0 829.3,410.0 829.3,580.0 894.0,580.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 994.0 464.2 L 994.0 500.0" stroke="black" stroke-width="1.2" data-arrow-id="AR27" data-waypoints="994.0,464.2 994.0,500.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 994.0 695.8 L 994.0 660.0" stroke="black" stroke-width="1.2" data-arrow-id="AR28" data-waypoints="994.0,695.8 994.0,660.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 580.0 84.2 L 580.0 120.0" stroke="black" stroke-width="1.2" data-arrow-id="_merged_A2_control" data-waypoints="580.0,84.2 580.0,120.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 960.7 84.2 L 960.7 120.0" stroke="black" stroke-width="1.2" data-arrow-id="_merged_A3_control" data-waypoints="960.7,84.2 960.7,120.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 210.0 464.2 L 210.0 500.0" stroke="black" stroke-width="1.2" data-arrow-id="_merged_A4_control" data-waypoints="210.0,464.2 210.0,500.0" marker-end="url(#arrow)" fill="none" />
+<text x="224.0" y="114.0" font-size="14" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR2">名字長度上限；標準入口只收姓名</text>
+<text x="236.0" y="114.0" font-size="14" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR2">(R8)</text>
+<text x="224.0" y="296.0" font-size="14" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR3">crypto/rand token＋HttpOnly</text>
+<text x="236.0" y="296.0" font-size="14" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR3">cookie＋伺服器端名冊(DD-16)</text>
+<text x="594.0" y="296.0" font-size="12" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR9">Go struct＋sync.Mutex</text>
+<text x="606.0" y="296.0" font-size="12" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR9">內原子級聯刪除＋JSONL 事件日誌(DD-14)</text>
+<text x="988.0" y="296.0" font-size="10" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR15">Store.Proposals[pid]</text>
+<text x="1000.0" y="296.0" font-size="10" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR15">.Options[oid] 巢狀 map(DD-1)</text>
+<text x="230.0" y="711.8" font-size="14" text-anchor="middle" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR20">map[string]Vote 覆寫語意＋鎖內計數(DD-8)</text>
+<text x="594.0" y="494.0" font-size="14" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR23">樂觀更新先行；diff</text>
+<text x="606.0" y="494.0" font-size="14" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR23">渲染不整塊重繪；游標節流</text>
+<text x="594.0" y="711.8" font-size="14" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR24">SSE 單軌 text/event-stream</text>
+<text x="606.0" y="711.8" font-size="14" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR24">ctx.Done() 斷線偵測＋手寫軌道演算法(DD-15/17)</text>
+<text x="988.0" y="494.0" font-size="14" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR27">R5 權限矩陣；管理路由須 loopback</text>
+<text x="1000.0" y="494.0" font-size="14" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR27">且忽略 X-Forwarded-For(DD-3)</text>
+<text x="988.0" y="676.0" font-size="14" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR28">Authorize() 純函式</text>
+<text x="1000.0" y="676.0" font-size="14" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR28">testing 正反向窮舉(DD-19)</text>
+<text x="574.0" y="114.0" font-size="14" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR4">已登記身分 {uid,name}（未登記則禁止一切寫入）、R5 僅提案人可</text>
+<text x="586.0" y="114.0" font-size="14" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR4">CRUD；R8 後端不提供枚舉端點、allow/deny 裁決（伺服器端，唯一安全邊界）</text>
+<text x="954.7" y="114.0" font-size="14" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR5">已登記身分（新增可選項的前提）、floating date 語意；start&lt;=end；同提案不得重複區間</text>
+<text x="966.7" y="114.0" font-size="14" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR5">他人票數==0 才可編輯（R5 鎖定閘，鎖內當場數，不物化)、allow/deny 裁決</text>
+<text x="204.0" y="494.0" font-size="14" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR6">已登記身分（投票具名的前提 R3）、map key =</text>
+<text x="216.0" y="494.0" font-size="14" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR6">optionId__uid（一人一票、不可代投）、allow/deny 裁決</text>
+<text x="797.0" y="195.0" font-size="14" font-weight="bold" fill="black" text-anchor="middle" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR11">提案脈絡</text>
+<text x="797.0" y="212.0" font-size="14" font-weight="bold" fill="black" text-anchor="middle" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR11">pid（可選項的歸屬容器）</text>
+<text x="415.0" y="612.0" font-size="14" font-weight="bold" fill="black" text-anchor="middle" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR21" >票數＋具名投票者名單</text>
+<text x="600.0" y="362.0" font-size="14" font-weight="bold" fill="black" text-anchor="middle" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR16" >可選項記錄（投票標的）</text>
+<text x="994.0" y="348.0" font-size="14" font-weight="bold" fill="black" text-anchor="middle" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR17" >區間集合（日曆繪製來源）</text>
+<text x="-14.0" y="204.0" font-size="20" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR1">暱稱輸入／復原碼(token)</text>
+<text x="-14.0" y="69.2" font-size="20" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR7">提案標題／說明</text>
+<text x="-14.0" y="95.2" font-size="20" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR7">／修改／刪除指令</text>
+<text x="1278.0" y="43.2" font-size="20" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR10">提案記錄＋分享網址</text>
+<text x="1278.0" y="69.2" font-size="20" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR10">（唯一入口）；GET</text>
+<text x="1278.0" y="95.2" font-size="20" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR10">/api/my/proposals</text>
+<text x="1278.0" y="121.2" font-size="20" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR10">帶主體查詢(DD-20)</text>
+<text x="-14.0" y="44.0" font-size="20" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR12">日期區間 {startDate,endDate}＋備註</text>
+<text x="-14.0" y="597.7" font-size="20" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR18">投票／取消投票</text>
+<text x="-14.0" y="623.7" font-size="20" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR18">動作（複選 R3）</text>
+<text x="-14.0" y="441.0" font-size="20" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR22">游標座標／懸停</text>
+<text x="-14.0" y="467.0" font-size="20" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR22">標的／視窗事件</text>
+<text x="1278.0" y="428.0" font-size="20" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR25">日曆帶狀視圖＋</text>
+<text x="1278.0" y="454.0" font-size="20" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR25">可選項列表＋線</text>
+<text x="1278.0" y="480.0" font-size="20" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR25">上名單＋他人游標</text>
+<text x="-14.0" y="414.0" font-size="20" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR26">每一筆讀寫請求（含惡意構造的）</text>
+</svg>

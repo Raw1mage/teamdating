@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行程統合</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<!-- 阻斷式錯誤畫面：後端不可達 / 致命錯誤時全屏顯示，不吞成永久 loading（tasks 1.4 / 5.x） -->
+<div id="gate" class="gate" hidden>
+  <div class="gate-card">
+    <h2 id="gate-title">無法啟動</h2>
+    <pre id="gate-body"></pre>
+    <button id="gate-retry" type="button" class="btn btn-ink">重試</button>
+  </div>
+</div>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button id="nav-home" class="logo" title="行程統合">旅</button>
+    <button id="nav-back" class="btn btn-icon btn-ghost nav-back" title="回提案列表" aria-label="回提案列表" hidden><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+    <div id="crumb" class="crumb"></div>
+  </div>
+  <div class="topbar-right">
+    <input id="me-name" type="text" maxlength="16" placeholder="輸入名字即登記…" autocomplete="off">
+    <div id="head-actions" class="head-actions" hidden>
+      <button id="b-share" class="btn btn-icon btn-share" title="分享邀請連結" aria-label="分享邀請連結"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.6" x2="15.4" y2="6.4"></line><line x1="8.6" y1="13.4" x2="15.4" y2="17.6"></line></svg></button>
+      <button id="b-open-calendar" class="btn btn-accent2 btn-icon" aria-label="開全頁月曆" title="開全頁月曆"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="8" y1="2.5" x2="8" y2="6.5"></line><line x1="16" y1="2.5" x2="16" y2="6.5"></line></svg></button>
+      <div id="gear-wrap" class="gear-wrap" hidden>
+        <button id="b-gear" class="btn btn-icon btn-ghost" title="提案設定" aria-label="提案設定" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 8 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 3.6 8a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H8a1.65 1.65 0 0 0 1-1.51V2a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V8a1.65 1.65 0 0 0 1.51 1H22a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></button>
+        <div id="gear-menu" class="gear-menu" hidden>
+          <button id="me-identity" class="gear-item" title="管理姓名與 email">身分設定（姓名 / email）</button>
+          <button id="me-recovery" class="gear-item" title="顯示 / 貼上復原碼">身分復原碼</button>
+          <button id="b-repid" class="gear-item" title="更換分享網址：舊網址立即失效">更換分享網址</button>
+          <button id="b-del-proposal" class="gear-item gear-item-danger">刪除提案</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════ 第一層：提案列表（無全域列表，只有自己參與過的）══════ -->
+<main id="view-list" hidden>
+  <div class="list-wrap">
+    <div class="list-head">
+      <div>
+        <h1>我的提案</h1>
+        <p class="sub">只顯示你建立或投過票的提案。沒有全域列表——憑分享網址才進得去別人的提案。</p>
+      </div>
+      <button id="b-new-proposal" class="btn btn-accent2">＋ 新增提案</button>
+    </div>
+    <div id="proposal-list" class="proposal-list"></div>
+  </div>
+</main>
+
+<!-- ══════ 第二層：提案內頁 ══════ -->
+<main id="view-detail" hidden>
+  <div class="detail-head">
+    <div class="detail-head-inner">
+      <div class="detail-head-text">
+        <div class="d-title-row">
+          <h1 id="d-title"></h1>
+        </div>
+        <div id="d-meta" class="d-meta"></div>
+        <p id="d-desc" class="d-desc"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-body">
+    <aside class="pane-options">
+      <div class="card options-card">
+        <div class="options-head">
+          <div class="options-head-left">
+            <h2>可選項</h2>
+            <span id="o-count" class="muted"></span>
+          </div>
+          <button id="b-new-option" class="btn btn-accent2 btn-icon" aria-label="新增可選項" title="新增可選項">＋</button>
+        </div>
+        <div id="option-list" class="option-list"></div>
+        <div id="not-voted-box" class="not-voted-box">
+          <div class="not-voted-title">誰還沒投</div>
+          <div id="not-voted" class="not-voted"></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<!-- 獨立全螢幕月曆頁（手機優先視覺化，#/p/<pid>/cal） -->
+<main id="view-calendar" hidden>
+  <div class="calpage-head">
+    <button id="calpage-back" class="btn btn-ghost calpage-back" aria-label="上一層" title="上一層"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+    <h1 id="calpage-title" class="calpage-title"></h1>
+  </div>
+  <div class="calpage-legend">
+    <span>滿色＝你已投「可以」・淡色＝尚未投</span>
+    <span class="calpage-tip">點色塊即可對該可選項投「可以」</span>
+  </div>
+  <div id="calpage-empty" class="calpage-empty" hidden>還沒有任何可選項。回提案頁按「＋ 新增可選項」建立日期範圍。</div>
+  <div id="calpage-scroll" class="calpage-scroll"></div>
+</main>
+
+<!-- 新增提案 modal -->
+<div id="m-proposal" class="modal" hidden>
+  <form id="f-proposal" class="card modal-card">
+    <h2>新增提案</h2>
+    <label class="field">提案名稱
+      <input id="p-title" required maxlength="40" placeholder="例：秋季日本團" autocomplete="off">
+    </label>
+    <label class="field">說明（選填）
+      <textarea id="p-desc" rows="3" maxlength="300" placeholder="目的地、預算、注意事項…"></textarea>
+    </label>
+    <div class="modal-actions">
+      <button type="button" data-close class="btn btn-ghost full">取消</button>
+      <button type="submit" class="btn btn-accent2 full">建立</button>
+    </div>
+  </form>
+</div>
+
+<!-- 新增可選項 modal -->
+<div id="m-option" class="modal" hidden>
+  <form id="f-option" class="card modal-card">
+    <h2 id="m-option-title">新增可選項</h2>
+    <div class="grid2">
+      <label class="field">開始
+        <input type="date" id="o-start" required>
+      </label>
+      <label class="field">結束
+        <input type="date" id="o-end" required>
+      </label>
+    </div>
+    <p id="o-len" class="o-len"></p>
+    <label class="field">備註（選填）
+      <input id="o-note" maxlength="30" placeholder="例：避開連假" autocomplete="off">
+    </label>
+    <div class="modal-actions">
+      <button type="button" data-close class="btn btn-ghost full">取消</button>
+      <button type="submit" class="btn btn-accent2 full">加入</button>
+    </div>
+  </form>
+</div>
+
+<!-- 復原碼 modal -->
+<div id="m-recovery" class="modal" hidden>
+  <form id="f-recovery" class="card modal-card">
+    <h2>身分復原碼</h2>
+    <p class="sub">這串碼就是你的身分。換裝置或清除瀏覽器資料後，在新裝置貼上即可接回你的票。請自行保存。</p>
+    <div class="field">你目前的復原碼
+      <code id="my-recovery" class="recovery-code">（登記後顯示）</code>
+    </div>
+    <label class="field">貼上復原碼以接回既有身分
+      <input id="r-paste" placeholder="xxxx-xxxx-xxxx-…" autocomplete="off">
+    </label>
+    <div class="modal-actions">
+      <button type="button" data-close class="btn btn-ghost full">關閉</button>
+      <button type="submit" class="btn btn-ink full">接回身分</button>
+    </div>
+  </form>
+</div>
+
+<!-- 同名身分挑選 modal：同一個名字有多個既有身分時，讓本人自己認領 -->
+<div id="m-whoami" class="modal" hidden>
+  <div class="card modal-card">
+    <h2>有多個同名的身分</h2>
+    <p class="sub">這個名字底下有不只一個既有身分。請選出屬於你的那一個，本裝置就會接回它；選錯的話你會看不到自己的提案。</p>
+    <div id="whoami-list" class="field"></div>
+    <div class="modal-actions">
+      <button type="button" data-close class="btn btn-ghost full">都不是，取消</button>
+    </div>
+  </div>
+</div>
+
+<!-- 分享邀請 modal -->
+<div id="m-share" class="modal" hidden>
+  <div class="card modal-card">
+    <h2>邀請其他人一起選日期</h2>
+    <p class="sub">把這個連結傳給同行的人。開啟後登記名字就能投票，不需要註冊帳號。</p>
+    <div class="field">邀請連結
+      <code id="share-url" class="recovery-code"></code>
+    </div>
+    <p id="share-hint" class="sub"></p>
+    <div class="modal-actions">
+      <button type="button" data-close class="btn btn-ghost full">關閉</button>
+      <button type="button" id="b-share-copy" class="btn btn-accent2 full">複製連結</button>
+    </div>
+  </div>
+</div>
+
+<!-- 身分後台 modal：姓名 + email（DD-6）。
+     ★ email 在這裡是選填的，而且只在這裡可以自由補填。登記場不強制——只選行程的人
+       零摩擦；只有發起提案（資源持有者）與撞名認領才真的需要它。 -->
+<div id="m-identity" class="modal" hidden>
+  <form id="f-identity" class="card modal-card">
+    <h2>身分設定</h2>
+    <p class="sub">email 只有兩個時候需要：發起提案時，以及換裝置遇到同名要認回自己帳號時。只是選行程的話可以不填。</p>
+    <label class="field">姓名
+      <input id="i-name" maxlength="16" required autocomplete="off">
+    </label>
+    <label class="field">email（選填）
+      <input id="i-email" type="email" maxlength="254" placeholder="you@example.com" autocomplete="email">
+    </label>
+    <div class="modal-actions">
+      <button type="button" data-close class="btn btn-ghost full">取消</button>
+      <button type="submit" class="btn btn-accent2 full">儲存</button>
+    </div>
+  </form>
+</div>
+
+<!-- 撞名：email 認證（認回自己）/ 真撞名不同人（改名或接受編號） -->
+<div id="m-samename" class="modal" hidden>
+  <div class="card modal-card">
+    <h2 id="sn-title">這個名字已經有人使用</h2>
+    <p id="sn-msg" class="sub"></p>
+
+    <!-- 分支 A：是本人→ 輸入該身分的 email，收信點連結完成認證 -->
+    <form id="f-sn-verify">
+      <label class="field">如果這是你本人：輸入該身分的 email
+        <input id="sn-email" type="email" maxlength="254" placeholder="you@example.com" autocomplete="email">
+      </label>
+      <button type="submit" class="btn btn-ink full">寄認證信給我</button>
+    </form>
+    <p id="sn-sent" class="sub" hidden>認證信已寄出，請到收件匣點連結。連結 15 分鐘內有效，只能用一次。</p>
+
+    <!-- 分支 B：真的是另一個人→ 改名或接受編號。系統不自動加後綴（DD-3）：
+         默默把人改名，他只會在別人找不到他的時候才發現。 -->
+    <div id="sn-collision" hidden>
+      <hr>
+      <p class="sub">如果你是剛好同名的另一個人：</p>
+      <div class="modal-actions">
+        <button type="button" id="sn-rename" class="btn btn-ghost full">我改用別的名字</button>
+        <button type="button" id="sn-suffix" class="btn btn-accent2 full">接受自動編號</button>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" data-close class="btn btn-ghost full">關閉</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast-wrap"></div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

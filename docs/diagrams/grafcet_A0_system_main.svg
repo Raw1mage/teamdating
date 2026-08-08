@@ -1,0 +1,226 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="906" viewBox="-32.00 -2.00 270.17 136.00" role="img">
+<style>
+.step{fill:#fff;stroke:#111;stroke-width:.14}.step-inner{fill:none;stroke:#111;stroke-width:.08}
+.action{fill:#fff;stroke:#111;stroke-width:.14}.action-inner{fill:none;stroke:#111;stroke-width:.08}.gate{stroke:#111;stroke-width:.16}
+.edge{fill:none;stroke:#111;stroke-width:.05;stroke-linecap:round;stroke-linejoin:round}.edge-arrow{marker-end:url(#arrow)}
+.flyover-mask{stroke:#fff;stroke-width:.12;stroke-linecap:round}
+.flyover{fill:none;stroke:#111;stroke-width:.05;stroke-linecap:round}
+.junction{fill:#111;stroke:#111;stroke-width:0}.branch-junction{fill:#fff;stroke:#111;stroke-width:.08}
+.assoc{stroke:#111;stroke-width:.05}.label{font:bold .7px 'Times New Roman', 'BiauKai', 'DFKai-SB', serif;text-anchor:middle;dominant-baseline:middle}
+.action-label{font:.55px 'Times New Roman', 'BiauKai', 'DFKai-SB', serif;text-anchor:middle;dominant-baseline:middle}.gate-label{font:italic .55px 'Times New Roman', 'BiauKai', 'DFKai-SB', serif;text-anchor:start;dominant-baseline:middle}.gate-label-left{font:italic .55px 'Times New Roman', 'BiauKai', 'DFKai-SB', serif;text-anchor:end;dominant-baseline:middle}
+</style>
+<defs><marker id="arrow" markerWidth="0.4" markerHeight="0.4" refX="0.36" refY="0.2" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 0.4 0.2 L 0 0.4 z" fill="#111"/></marker></defs>
+<rect x="-32.00" y="-2.00" width="270.17" height="136.00" fill="white"/>
+<path class="edge edge-arrow" data-edge-id="edge:S0O1S1I1" data-segment-ids="S0O1S1I1:1S" d="M 95.93 7.00 L 95.93 11.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S1O1G1I1" data-segment-ids="S1O1G1I1:1S" d="M 95.93 14.00 L 95.93 16.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G1O1S2I1" data-segment-ids="G1O1S2I1:1S" d="M 95.93 16.00 L 95.93 20.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G1O2S90I1" data-segment-ids="G1O2S90I1:1S" d="M 60.62 16.00 L 60.62 20.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S2O1G5I1" data-segment-ids="S2O1G5I1:1S" d="M 95.93 23.00 L 95.93 33.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G5O1S3I1" data-segment-ids="G5O1S3I1:1S" d="M 95.93 33.00 L 95.93 35.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S3O1G2I1" data-segment-ids="S3O1G2I1:1S" d="M 95.93 38.00 L 95.93 40.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G2O1G6I1" data-segment-ids="G2O1G6I1:1S" d="M 95.93 40.00 L 95.93 46.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G2O2S4I1" data-segment-ids="G2O2S4I1:1E G2O2S4I1:2S" d="M 95.93 40.00 L 130.74 40.00 Q 131.24 40.00 131.24 40.50 L 131.24 50.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S4O1G5I2" data-segment-ids="S4O1G5I2:1S S4O1G5I2:2W S4O1G5I2:3N S4O1G5I2:4E S4O1G5I2:5S" d="M 131.24 53.00 L 131.24 58.50 Q 131.24 59.00 130.74 59.00 L 57.12 59.00 Q 56.62 59.00 56.62 58.50 L 56.62 29.50 Q 56.62 29.00 57.12 29.00 L 91.43 29.00 Q 91.93 29.00 91.93 29.50 L 91.93 33.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S5O1G3I1" data-segment-ids="S5O1G3I1:1S" d="M 60.62 53.00 L 60.62 55.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G3O1S6I1" data-segment-ids="G3O1S6I1:1S" d="M 25.31 55.00 L 25.31 61.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G3O2S10I1" data-segment-ids="G3O2S10I1:1S" d="M 60.62 55.00 L 60.62 61.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S6O1S7I1" data-segment-ids="S6O1S7I1:1S" d="M 25.31 64.00 L 25.31 68.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S7O1S8I1" data-segment-ids="S7O1S8I1:1S" d="M 25.31 71.00 L 25.31 87.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S8O1G6I2" data-segment-ids="S8O1G6I2:1S S8O1G6I2:2W S8O1G6I2:3N S8O1G6I2:4E S8O1G6I2:5S" d="M 25.31 90.00 L 25.31 91.50 Q 25.31 92.00 24.81 92.00 L -25.50 92.00 Q -26.00 92.00 -26.00 91.50 L -26.00 42.50 Q -26.00 42.00 -25.50 42.00 L 91.43 42.00 Q 91.93 42.00 91.93 42.50 L 91.93 46.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G6O1S5I1" data-segment-ids="G6O1S5I1:1S G6O1S5I1:2W G6O1S5I1:3S" d="M 95.93 46.00 L 95.93 47.50 Q 95.93 48.00 95.43 48.00 L 61.12 48.00 Q 60.62 48.00 60.62 48.50 L 60.62 50.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S10O1S11I1" data-segment-ids="S10O1S11I1:1S" d="M 60.62 64.00 L 60.62 68.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S11O1G7I1" data-segment-ids="S11O1G7I1:1S" d="M 60.62 71.00 L 60.62 85.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G7O1S12I1" data-segment-ids="G7O1S12I1:1S" d="M 60.62 85.00 L 60.62 87.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S12O1G8I1" data-segment-ids="S12O1G8I1:1S S12O1G8I1:2E S12O1G8I1:3S" d="M 60.62 90.00 L 60.62 97.50 Q 60.62 98.00 61.12 98.00 L 95.43 98.00 Q 95.93 98.00 95.93 98.50 L 95.93 102.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G8O1S13I1" data-segment-ids="G8O1S13I1:1S" d="M 95.93 102.00 L 95.93 104.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S13O1G4I1" data-segment-ids="S13O1G4I1:1S" d="M 95.93 107.00 L 95.93 109.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G4O1S14I1" data-segment-ids="G4O1S14I1:1S" d="M -10.00 109.00 L -10.00 113.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G4O2S15I1" data-segment-ids="G4O2S15I1:1S" d="M 25.31 109.00 L 25.31 113.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G4O3S16I1" data-segment-ids="G4O3S16I1:1S" d="M 60.62 109.00 L 60.62 113.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G4O4S17I1" data-segment-ids="G4O4S17I1:1S" d="M 95.93 109.00 L 95.93 113.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G4O5S18I1" data-segment-ids="G4O5S18I1:1S" d="M 131.24 109.00 L 131.24 113.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G4O6S19I1" data-segment-ids="G4O6S19I1:1S" d="M 166.55 109.00 L 166.55 113.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:G4O7S30I1" data-segment-ids="G4O7S30I1:1S" d="M 201.86 109.00 L 201.86 113.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S14O1G7I2" data-segment-ids="S14O1G7I2:1S S14O1G7I2:2W S14O1G7I2:3N S14O1G7I2:4E S14O1G7I2:5S" d="M -10.00 116.00 L -10.00 117.50 Q -10.00 118.00 -10.50 118.00 L -17.50 118.00 Q -18.00 118.00 -18.00 117.50 L -18.00 81.50 Q -18.00 81.00 -17.50 81.00 L 44.12 81.00 Q 44.62 81.00 44.62 81.50 L 44.62 85.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S15O1G7I3" data-segment-ids="S15O1G7I3:1S S15O1G7I3:2W S15O1G7I3:3N S15O1G7I3:4E S15O1G7I3:5S" d="M 25.31 116.00 L 25.31 119.50 Q 25.31 120.00 24.81 120.00 L -19.50 120.00 Q -20.00 120.00 -20.00 119.50 L -20.00 79.50 Q -20.00 79.00 -19.50 79.00 L 48.12 79.00 Q 48.62 79.00 48.62 79.50 L 48.62 85.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S16O1G7I4" data-segment-ids="S16O1G7I4:1S S16O1G7I4:2W S16O1G7I4:3N S16O1G7I4:4E S16O1G7I4:5S" d="M 60.62 116.00 L 60.62 121.50 Q 60.62 122.00 60.12 122.00 L -21.50 122.00 Q -22.00 122.00 -22.00 121.50 L -22.00 77.50 Q -22.00 77.00 -21.50 77.00 L 52.12 77.00 Q 52.62 77.00 52.62 77.50 L 52.62 85.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S17O1G7I5" data-segment-ids="S17O1G7I5:1S S17O1G7I5:2W S17O1G7I5:3N S17O1G7I5:4E S17O1G7I5:5S" d="M 95.93 116.00 L 95.93 123.50 Q 95.93 124.00 95.43 124.00 L -23.50 124.00 Q -24.00 124.00 -24.00 123.50 L -24.00 75.50 Q -24.00 75.00 -23.50 75.00 L 56.12 75.00 Q 56.62 75.00 56.62 75.50 L 56.62 85.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S18O1G8I2" data-segment-ids="S18O1G8I2:1S S18O1G8I2:2W S18O1G8I2:3N S18O1G8I2:4E S18O1G8I2:5S" d="M 131.24 116.00 L 131.24 125.50 Q 131.24 126.00 130.74 126.00 L -13.50 126.00 Q -14.00 126.00 -14.00 125.50 L -14.00 96.50 Q -14.00 96.00 -13.50 96.00 L 87.43 96.00 Q 87.93 96.00 87.93 96.50 L 87.93 102.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S19O1G8I3" data-segment-ids="S19O1G8I3:1S S19O1G8I3:2W S19O1G8I3:3N S19O1G8I3:4E S19O1G8I3:5S" d="M 166.55 116.00 L 166.55 127.50 Q 166.55 128.00 166.05 128.00 L -15.50 128.00 Q -16.00 128.00 -16.00 127.50 L -16.00 94.50 Q -16.00 94.00 -15.50 94.00 L 91.43 94.00 Q 91.93 94.00 91.93 94.50 L 91.93 102.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S30O1G6I3" data-segment-ids="S30O1G6I3:1S S30O1G6I3:2W S30O1G6I3:3N S30O1G6I3:4E S30O1G6I3:5S" d="M 201.86 116.00 L 201.86 129.50 Q 201.86 130.00 201.36 130.00 L -27.50 130.00 Q -28.00 130.00 -28.00 129.50 L -28.00 40.50 Q -28.00 40.00 -27.50 40.00 L 87.43 40.00 Q 87.93 40.00 87.93 40.50 L 87.93 46.00"/>
+<path class="edge edge-arrow" data-edge-id="edge:S90O1S0I1" data-segment-ids="S90O1S0I1:1S S90O1S0I1:2W S90O1S0I1:3N S90O1S0I1:4E S90O1S0I1:5S" d="M 60.62 23.00 L 60.62 26.50 Q 60.62 27.00 60.12 27.00 L 57.12 27.00 Q 56.62 27.00 56.62 26.50 L 56.62 2.50 Q 56.62 2.00 57.12 2.00 L 95.43 2.00 Q 95.93 2.00 95.93 2.50 L 95.93 4.00"/>
+<rect class="step" x="93.93" y="4.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<rect class="step-inner" x="94.18" y="4.25" width="3.50" height="2.50" rx="0.22" ry="0.22"/>
+<text class="label" x="95.93" y="5.50">0</text>
+<rect class="step" x="93.93" y="11.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="95.93" y="12.50">1</text>
+<rect class="step" x="93.93" y="20.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="95.93" y="21.50">2</text>
+<rect class="step" x="93.93" y="35.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="95.93" y="36.50">3</text>
+<rect class="step" x="129.24" y="50.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="131.24" y="51.50">4</text>
+<rect class="step" x="58.62" y="50.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="60.62" y="51.50">5</text>
+<rect class="step" x="23.31" y="61.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="25.31" y="62.50">6</text>
+<rect class="step" x="23.31" y="68.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="25.31" y="69.50">7</text>
+<rect class="step" x="23.31" y="87.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="25.31" y="88.50">8</text>
+<rect class="step" x="58.62" y="61.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="60.62" y="62.50">10</text>
+<rect class="step" x="58.62" y="68.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="60.62" y="69.50">11</text>
+<rect class="step" x="58.62" y="87.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="60.62" y="88.50">12</text>
+<rect class="step" x="93.93" y="104.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="95.93" y="105.50">13</text>
+<rect class="step" x="-12.00" y="113.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="-10.00" y="114.50">14</text>
+<rect class="step" x="23.31" y="113.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="25.31" y="114.50">15</text>
+<rect class="step" x="58.62" y="113.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="60.62" y="114.50">16</text>
+<rect class="step" x="93.93" y="113.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="95.93" y="114.50">17</text>
+<rect class="step" x="129.24" y="113.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="131.24" y="114.50">18</text>
+<rect class="step" x="164.55" y="113.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="166.55" y="114.50">19</text>
+<rect class="step" x="199.86" y="113.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="201.86" y="114.50">30</text>
+<rect class="step" x="58.62" y="20.00" width="4.00" height="3.00" rx="0.35" ry="0.35"/>
+<text class="label" x="60.62" y="21.50">90</text>
+<line class="assoc" x1="97.93" y1="5.50" x2="98.93" y2="5.50"/>
+<rect class="action" x="98.93" y="4.07" width="29.31" height="2.86"/>
+<text class="action-label" x="113.59" y="5.09"><tspan x="113.59" dy="0">應用啟動：載入 embed 的前端資產，讀取 localStorage 的名字快取（僅為避免閃爍</tspan><tspan x="113.59" dy="0.82">的快取，非權威——權威在伺服器端，風險 D 已由 DD-20 的帶主體查詢解除）</tspan></text>
+<line class="assoc" x1="97.93" y1="12.50" x2="98.93" y2="12.50"/>
+<rect class="action" x="98.93" y="11.07" width="29.31" height="2.86"/>
+<text class="action-label" x="113.59" y="12.09"><tspan x="113.59" dy="0">GET /api/me：以 HttpOnly cookie 中的 token 換取身分（DD-</tspan><tspan x="113.59" dy="0.82">16）。無 cookie 者由伺服器 crypto/rand 產生新 token 並下發</tspan></text>
+<line class="assoc" x1="97.93" y1="21.50" x2="98.93" y2="21.50"/>
+<rect class="action" x="98.93" y="20.07" width="29.31" height="2.86"/>
+<text class="action-label" x="113.59" y="21.50"><tspan x="113.59" dy="0">取得名冊（GET /api/users）：uid → name 的對照，供顯示與「誰還沒投」的分母（DD-10）</tspan></text>
+<line class="assoc" x1="97.93" y1="36.50" x2="98.93" y2="36.50"/>
+<rect class="action" x="98.93" y="35.07" width="29.31" height="2.86"/>
+<text class="action-label" x="113.59" y="36.50"><tspan x="113.59" dy="0">身分閘：判定本 token 對應的 name 是否存在且非空</tspan></text>
+<line class="assoc" x1="133.24" y1="51.50" x2="134.24" y2="51.50"/>
+<rect class="action" x="134.24" y="50.07" width="29.31" height="2.86"/>
+<text class="action-label" x="148.90" y="50.68"><tspan x="148.90" dy="0">登記表單（POST /api/me/name）並禁用一切寫入路徑（R3 投票須具名；R8</tspan><tspan x="148.90" dy="0.82">標準入口只收姓名）。登記成功後**當場顯示復原碼**（即 token 的可讀</tspan><tspan x="148.90" dy="0.82">分組形式，DD-2），並提供「我已有復原碼」的貼上入口以接回既有身分</tspan></text>
+<line class="assoc" x1="62.62" y1="51.50" x2="63.62" y2="51.50"/>
+<rect class="action" x="63.62" y="50.07" width="29.31" height="2.86"/>
+<text class="action-label" x="78.28" y="51.50"><tspan x="78.28" dy="0">路由裁決：解析 location.hash 取得 pid</tspan></text>
+<line class="assoc" x1="27.31" y1="62.50" x2="28.31" y2="62.50"/>
+<rect class="action" x="28.31" y="61.07" width="29.31" height="2.86"/>
+<text class="action-label" x="42.97" y="61.68"><tspan x="42.97" dy="0">第一層依角色分歧投射（R8）：一般使用者呼叫 GET /api/my/proposals 取回**自己</tspan><tspan x="42.97" dy="0.82">參與過的**提案（DD-20，帶主體查詢，非全域列表）；本機管理者的全提案檢</tspan><tspan x="42.97" dy="0.82">視走同一 binary 的 loopback-only 路由（DD-3，須驗 RemoteAddr 且忽略 X-Forwarded-For）</tspan></text>
+<line class="assoc" x1="27.31" y1="69.50" x2="28.31" y2="69.50"/>
+<rect class="action" x="28.31" y="68.07" width="29.31" height="2.86"/>
+<text class="action-label" x="42.97" y="69.50"><tspan x="42.97" dy="0">等待建立提案指令</tspan></text>
+<line class="assoc" x1="27.31" y1="88.50" x2="28.31" y2="88.50"/>
+<rect class="action" x="28.31" y="87.07" width="29.31" height="2.86"/>
+<text class="action-label" x="42.97" y="88.09"><tspan x="42.97" dy="0">POST /api/proposals 取得 pid（後端先 append+fsync 事件日誌再</tspan><tspan x="42.97" dy="0.82">改記憶體，風險 N 的寫入順序不得顛倒），導向 #/p/{pid}</tspan></text>
+<line class="assoc" x1="62.62" y1="62.50" x2="63.62" y2="62.50"/>
+<rect class="action" x="63.62" y="61.07" width="29.31" height="2.86"/>
+<text class="action-label" x="78.28" y="61.68"><tspan x="78.28" dy="0">進入第二層：開啟單一 SSE 連線 GET /api/proposals/{pid}/stream（DD-15）。同一條</tspan><tspan x="78.28" dy="0.82">text/event-stream 同時承載提案／可選項／票的變更與 presence／游標事件——原</tspan><tspan x="78.28" dy="0.82">設計的雙軌僅因 Firestore 不適合高頻游標寫入而存在，該理由已隨供應商消失</tspan></text>
+<line class="assoc" x1="62.62" y1="69.50" x2="63.62" y2="69.50"/>
+<rect class="action" x="63.62" y="68.07" width="29.31" height="2.86"/>
+<text class="action-label" x="78.28" y="69.09"><tspan x="78.28" dy="0">接收初始快照事件（event: snapshot）：提案本體、可選項集合、票集合、</tspan><tspan x="78.28" dy="0.82">當前線上名單一次送達。在 ready 旗標成立前不得判定「提案不存在」</tspan></text>
+<line class="assoc" x1="62.62" y1="88.50" x2="63.62" y2="88.50"/>
+<rect class="action" x="63.62" y="87.07" width="29.31" height="2.86"/>
+<text class="action-label" x="78.28" y="88.09"><tspan x="78.28" dy="0">區間圖著色指派軌道（不重疊的可選項共用軌道，使同一可選項跨週跨月落在同一</tspan><tspan x="78.28" dy="0.82">列成為連續帶），以 diff 方式更新 DOM 並保留捲動位置（DD-12，不得 innerHTML 重建）</tspan></text>
+<line class="assoc" x1="97.93" y1="105.50" x2="98.93" y2="105.50"/>
+<rect class="action" x="98.93" y="104.07" width="29.31" height="2.86"/>
+<text class="action-label" x="113.59" y="105.50"><tspan x="113.59" dy="0">互動等待（同時監聽本地操作與 SSE 推送的遠端變更）</tspan></text>
+<line class="assoc" x1="-8.00" y1="114.50" x2="-7.00" y2="114.50"/>
+<rect class="action" x="-7.00" y="113.07" width="29.31" height="2.86"/>
+<text class="action-label" x="7.65" y="114.09"><tspan x="7.65" dy="0">新增可選項：前端先驗 start&lt;=end 與同提案不重複，樂觀插入畫面後 POST；被後端</tspan><tspan x="7.65" dy="0.82">Authorize 拒絕時回滾樂觀項並顯示原因（前端驗證僅為即時回饋，不構成保護）</tspan></text>
+<line class="assoc" x1="27.31" y1="114.50" x2="28.31" y2="114.50"/>
+<rect class="action" x="28.31" y="113.07" width="29.31" height="2.86"/>
+<text class="action-label" x="42.97" y="114.09"><tspan x="42.97" dy="0">切換投票：後端以決定性鍵 {oid}__{uid} 在 map 上寫入或刪除（DD-8，覆寫語</tspan><tspan x="42.97" dy="0.82">意使一人一票由鍵結構保證，不需交易）。樂觀更新票數，SSE 推送後校正</tspan></text>
+<line class="assoc" x1="62.62" y1="114.50" x2="63.62" y2="114.50"/>
+<rect class="action" x="63.62" y="113.07" width="29.31" height="2.86"/>
+<text class="action-label" x="78.28" y="113.68"><tspan x="78.28" dy="0">編輯或刪除可選項。前置閘（R5）：我是提案人 → 永遠允許；我是作者 AND 他人票</tspan><tspan x="78.28" dy="0.82">數==0 → 允許；其餘 → 拒絕。**他人票數由後端在 sync.Mutex 內當場數**，不再是可偽</tspan><tspan x="78.28" dy="0.82">造的物化欄位（原風險 E 消失）。前端據此隱藏按鈕僅為便利，實際攔截在 Authorize()</tspan></text>
+<line class="assoc" x1="97.93" y1="114.50" x2="98.93" y2="114.50"/>
+<rect class="action" x="98.93" y="113.07" width="29.31" height="2.86"/>
+<text class="action-label" x="113.59" y="114.09"><tspan x="113.59" dy="0">提案 CRUD（僅提案人 R5）。刪除時在**同一把 sync.Mutex 內**級聯清除其下 options 與</tspan><tspan x="113.59" dy="0.82">votes——原風險 I（client SDK 多筆刪除非原子、中途失敗留孤兒票）在此結構上不成立</tspan></text>
+<line class="assoc" x1="133.24" y1="114.50" x2="134.24" y2="114.50"/>
+<rect class="action" x="134.24" y="113.07" width="29.31" height="2.86"/>
+<text class="action-label" x="148.90" y="114.09"><tspan x="148.90" dy="0">節流上報自身游標相對座標（0..1，~20Hz）與懸停標的至 POST /api/proposals/{pid}/cursor。相對</tspan><tspan x="148.90" dy="0.82">座標而非像素——否則不同視窗尺寸的人看到的位置全錯。此路徑**不經 step 12 主渲染**</tspan></text>
+<line class="assoc" x1="168.55" y1="114.50" x2="169.55" y2="114.50"/>
+<rect class="action" x="169.55" y="113.07" width="29.31" height="2.86"/>
+<text class="action-label" x="184.21" y="113.68"><tspan x="184.21" dy="0">收到他人 presence／游標事件，於獨立圖層繪製（不觸發主視圖重繪）。**離線判定不需心</tspan><tspan x="184.21" dy="0.82">跳或墓碑**：後端於 SSE 連線的 ctx.Done() 即第一手觀測到斷線並廣播離線事件，故直接關</tspan><tspan x="184.21" dy="0.82">分頁或斷網皆能正確清除游標（原設計需 RTDB onDisconnect 才能達成，且 beforeunload 必漏）</tspan></text>
+<line class="assoc" x1="203.86" y1="114.50" x2="204.86" y2="114.50"/>
+<rect class="action" x="204.86" y="113.07" width="29.31" height="2.86"/>
+<text class="action-label" x="219.52" y="114.09"><tspan x="219.52" dy="0">離開第二層：關閉 EventSource（後端隨即由 ctx.Done() 觀</tspan><tspan x="219.52" dy="0.82">測到並廣播本人離線）、清除游標圖層，回到路由裁決</tspan></text>
+<line class="assoc" x1="62.62" y1="21.50" x2="63.62" y2="21.50"/>
+<rect class="action" x="63.62" y="20.07" width="29.31" height="2.86"/>
+<text class="action-label" x="78.28" y="21.09"><tspan x="78.28" dy="0">阻斷式錯誤畫面：顯示後端不可達的具體徵狀與修復步驟（服務未啟動</tspan><tspan x="78.28" dy="0.82">／連接埠不符／反向代理設定）。無自動重試路徑，須人介入後重新載入</tspan></text>
+<line class="gate" x1="58.62" y1="16.00" x2="97.93" y2="16.00"/>
+<line class="gate" x1="89.93" y1="33.00" x2="97.93" y2="33.00"/>
+<circle class="branch-junction" cx="95.93" cy="40.00" r="0.28"/>
+<line class="gate" x1="23.31" y1="55.00" x2="62.62" y2="55.00"/>
+<line class="gate" x1="85.93" y1="46.00" x2="97.93" y2="46.00"/>
+<line class="gate" x1="42.62" y1="85.00" x2="62.62" y2="85.00"/>
+<line class="gate" x1="85.93" y1="102.00" x2="97.93" y2="102.00"/>
+<line class="gate" x1="-12.00" y1="109.00" x2="203.86" y2="109.00"/>
+<line class="gate" x1="94.93" y1="9.00" x2="96.93" y2="9.00" data-label-kind="condition-stub" data-edge-id="edge:S0O1S1I1" data-arrow-id="condition_stub:T1" data-transition-id="T1" data-condition-stub-id="condition_stub:T1"/>
+<text class="gate-label" x="97.33" y="9.00" data-label-kind="condition-stub" data-edge-id="edge:S0O1S1I1" data-arrow-id="condition_stub:T1" data-transition-id="T1" data-condition-stub-id="condition_stub:T1"><tspan x="97.33" dy="0">DOM ready</tspan></text>
+<line class="gate" x1="94.93" y1="18.00" x2="96.93" y2="18.00" data-label-kind="condition-stub" data-edge-id="edge:G1O1S2I1" data-arrow-id="condition_stub:T2" data-transition-id="T2" data-condition-stub-id="condition_stub:T2"/>
+<text class="gate-label" x="97.33" y="18.00" data-label-kind="condition-stub" data-edge-id="edge:G1O1S2I1" data-arrow-id="condition_stub:T2" data-transition-id="T2" data-condition-stub-id="condition_stub:T2"><tspan x="97.33" dy="0">回應 200 且帶 uid</tspan></text>
+<line class="gate" x1="59.62" y1="18.00" x2="61.62" y2="18.00" data-label-kind="condition-stub" data-edge-id="edge:G1O2S90I1" data-arrow-id="condition_stub:T3" data-transition-id="T3" data-condition-stub-id="condition_stub:T3"/>
+<text class="gate-label-left" x="56.42" y="18.00" data-label-kind="condition-stub" data-edge-id="edge:G1O2S90I1" data-arrow-id="condition_stub:T3" data-transition-id="T3" data-condition-stub-id="condition_stub:T3"><tspan x="56.42" dy="0">後端不可達 OR 回應 5xx（不得靜默 fallback 續跑，天條 11）</tspan></text>
+<line class="gate" x1="94.93" y1="25.00" x2="96.93" y2="25.00" data-label-kind="condition-stub" data-edge-id="edge:S2O1G5I1" data-arrow-id="condition_stub:T4" data-transition-id="T4" data-condition-stub-id="condition_stub:T4"/>
+<text class="gate-label" x="97.33" y="25.00" data-label-kind="condition-stub" data-edge-id="edge:S2O1G5I1" data-arrow-id="condition_stub:T4" data-transition-id="T4" data-condition-stub-id="condition_stub:T4"><tspan x="97.33" dy="0">名冊到達</tspan></text>
+<line class="gate" x1="94.93" y1="42.00" x2="96.93" y2="42.00" data-label-kind="condition-stub" data-edge-id="edge:G2O1G6I1" data-arrow-id="condition_stub:T5" data-transition-id="T5" data-condition-stub-id="condition_stub:T5"/>
+<text class="gate-label" x="97.33" y="42.00" data-label-kind="condition-stub" data-edge-id="edge:G2O1G6I1" data-arrow-id="condition_stub:T5" data-transition-id="T5" data-condition-stub-id="condition_stub:T5"><tspan x="97.33" dy="0">name 已登記</tspan></text>
+<line class="gate" x1="130.24" y1="42.00" x2="132.24" y2="42.00" data-label-kind="condition-stub" data-edge-id="edge:G2O2S4I1" data-arrow-id="condition_stub:T6" data-transition-id="T6" data-condition-stub-id="condition_stub:T6"/>
+<text class="gate-label" x="132.64" y="42.00" data-label-kind="condition-stub" data-edge-id="edge:G2O2S4I1" data-arrow-id="condition_stub:T6" data-transition-id="T6" data-condition-stub-id="condition_stub:T6"><tspan x="132.64" dy="0">name 未登記</tspan></text>
+<line class="gate" x1="90.93" y1="31.00" x2="92.93" y2="31.00" data-label-kind="condition-stub" data-edge-id="edge:S4O1G5I2" data-arrow-id="condition_stub:T7" data-transition-id="T7" data-condition-stub-id="condition_stub:T7"/>
+<text class="gate-label-left" x="90.53" y="31.00" data-label-kind="condition-stub" data-edge-id="edge:S4O1G5I2" data-arrow-id="condition_stub:T7" data-transition-id="T7" data-condition-stub-id="condition_stub:T7"><tspan x="90.53" dy="0">登記成功 OR 復原碼驗證通過（伺服器端以 crypto/subtle 常數時間比對）</tspan></text>
+<line class="gate" x1="24.31" y1="57.00" x2="26.31" y2="57.00" data-label-kind="condition-stub" data-edge-id="edge:G3O1S6I1" data-arrow-id="condition_stub:T8" data-transition-id="T8" data-condition-stub-id="condition_stub:T8"/>
+<text class="gate-label-left" x="23.91" y="57.00" data-label-kind="condition-stub" data-edge-id="edge:G3O1S6I1" data-arrow-id="condition_stub:T8" data-transition-id="T8" data-condition-stub-id="condition_stub:T8"><tspan x="23.91" dy="0">hash 無 pid → 第一層</tspan></text>
+<line class="gate" x1="59.62" y1="57.00" x2="61.62" y2="57.00" data-label-kind="condition-stub" data-edge-id="edge:G3O2S10I1" data-arrow-id="condition_stub:T9" data-transition-id="T9" data-condition-stub-id="condition_stub:T9"/>
+<text class="gate-label" x="62.02" y="57.00" data-label-kind="condition-stub" data-edge-id="edge:G3O2S10I1" data-arrow-id="condition_stub:T9" data-transition-id="T9" data-condition-stub-id="condition_stub:T9"><tspan x="62.02" dy="0">hash 帶合法 pid → 第二層</tspan></text>
+<line class="gate" x1="24.31" y1="66.00" x2="26.31" y2="66.00" data-label-kind="condition-stub" data-edge-id="edge:S6O1S7I1" data-arrow-id="condition_stub:T10" data-transition-id="T10" data-condition-stub-id="condition_stub:T10"/>
+<text class="gate-label" x="26.71" y="66.00" data-label-kind="condition-stub" data-edge-id="edge:S6O1S7I1" data-arrow-id="condition_stub:T10" data-transition-id="T10" data-condition-stub-id="condition_stub:T10"><tspan x="26.71" dy="0">視圖就緒</tspan></text>
+<line class="gate" x1="24.31" y1="73.00" x2="26.31" y2="73.00" data-label-kind="condition-stub" data-edge-id="edge:S7O1S8I1" data-arrow-id="condition_stub:T11" data-transition-id="T11" data-condition-stub-id="condition_stub:T11"/>
+<text class="gate-label" x="26.71" y="73.00" data-label-kind="condition-stub" data-edge-id="edge:S7O1S8I1" data-arrow-id="condition_stub:T11" data-transition-id="T11" data-condition-stub-id="condition_stub:T11"><tspan x="26.71" dy="0">表單送出 AND title 非空</tspan></text>
+<line class="gate" x1="90.93" y1="44.00" x2="92.93" y2="44.00" data-label-kind="condition-stub" data-edge-id="edge:S8O1G6I2" data-arrow-id="condition_stub:T12" data-transition-id="T12" data-condition-stub-id="condition_stub:T12"/>
+<text class="gate-label" x="96.13" y="44.00" data-label-kind="condition-stub" data-edge-id="edge:S8O1G6I2" data-arrow-id="condition_stub:T12" data-transition-id="T12" data-condition-stub-id="condition_stub:T12"><tspan x="96.13" dy="0">回應 201 並取得 pid</tspan></text>
+<line class="gate" x1="59.62" y1="66.00" x2="61.62" y2="66.00" data-label-kind="condition-stub" data-edge-id="edge:S10O1S11I1" data-arrow-id="condition_stub:T13" data-transition-id="T13" data-condition-stub-id="condition_stub:T13"/>
+<text class="gate-label" x="62.02" y="66.00" data-label-kind="condition-stub" data-edge-id="edge:S10O1S11I1" data-arrow-id="condition_stub:T13" data-transition-id="T13" data-condition-stub-id="condition_stub:T13"><tspan x="62.02" dy="0">EventSource 連線建立（onopen）</tspan></text>
+<line class="gate" x1="59.62" y1="73.00" x2="61.62" y2="73.00" data-label-kind="condition-stub" data-edge-id="edge:S11O1G7I1" data-arrow-id="condition_stub:T14" data-transition-id="T14" data-condition-stub-id="condition_stub:T14"/>
+<text class="gate-label" x="62.02" y="73.00" data-label-kind="condition-stub" data-edge-id="edge:S11O1G7I1" data-arrow-id="condition_stub:T14" data-transition-id="T14" data-condition-stub-id="condition_stub:T14"><tspan x="62.02" dy="0">snapshot 事件到達（提案存在）OR 收到 404 事件（提案不存在，顯示明確訊息）</tspan></text>
+<line class="gate" x1="94.93" y1="100.00" x2="96.93" y2="100.00" data-label-kind="condition-stub" data-edge-id="edge:S12O1G8I1" data-arrow-id="condition_stub:T15" data-transition-id="T15" data-condition-stub-id="condition_stub:T15"/>
+<text class="gate-label" x="97.33" y="100.00" data-label-kind="condition-stub" data-edge-id="edge:S12O1G8I1" data-arrow-id="condition_stub:T15" data-transition-id="T15" data-condition-stub-id="condition_stub:T15"><tspan x="97.33" dy="0">渲染完成</tspan></text>
+<line class="gate" x1="-11.00" y1="111.00" x2="-9.00" y2="111.00" data-label-kind="condition-stub" data-edge-id="edge:G4O1S14I1" data-arrow-id="condition_stub:T16" data-transition-id="T16" data-condition-stub-id="condition_stub:T16"/>
+<text class="gate-label-left" x="-11.40" y="110.32" data-label-kind="condition-stub" data-edge-id="edge:G4O1S14I1" data-arrow-id="condition_stub:T16" data-transition-id="T16" data-condition-stub-id="condition_stub:T16"><tspan x="-11.40" dy="0">新</tspan><tspan x="-11.40" dy="0.68">增可</tspan><tspan x="-11.40" dy="0.68">選項</tspan></text>
+<line class="gate" x1="24.31" y1="111.00" x2="26.31" y2="111.00" data-label-kind="condition-stub" data-edge-id="edge:G4O2S15I1" data-arrow-id="condition_stub:T17" data-transition-id="T17" data-condition-stub-id="condition_stub:T17"/>
+<text class="gate-label-left" x="23.91" y="111.00" data-label-kind="condition-stub" data-edge-id="edge:G4O2S15I1" data-arrow-id="condition_stub:T17" data-transition-id="T17" data-condition-stub-id="condition_stub:T17"><tspan x="23.91" dy="0">切換投票</tspan></text>
+<line class="gate" x1="59.62" y1="111.00" x2="61.62" y2="111.00" data-label-kind="condition-stub" data-edge-id="edge:G4O3S16I1" data-arrow-id="condition_stub:T18" data-transition-id="T18" data-condition-stub-id="condition_stub:T18"/>
+<text class="gate-label-left" x="59.22" y="111.00" data-label-kind="condition-stub" data-edge-id="edge:G4O3S16I1" data-arrow-id="condition_stub:T18" data-transition-id="T18" data-condition-stub-id="condition_stub:T18"><tspan x="59.22" dy="0">編輯或刪除可選項</tspan></text>
+<line class="gate" x1="94.93" y1="111.00" x2="96.93" y2="111.00" data-label-kind="condition-stub" data-edge-id="edge:G4O4S17I1" data-arrow-id="condition_stub:T19" data-transition-id="T19" data-condition-stub-id="condition_stub:T19"/>
+<text class="gate-label" x="97.33" y="111.00" data-label-kind="condition-stub" data-edge-id="edge:G4O4S17I1" data-arrow-id="condition_stub:T19" data-transition-id="T19" data-condition-stub-id="condition_stub:T19"><tspan x="97.33" dy="0">提案 CRUD（僅提案人）</tspan></text>
+<line class="gate" x1="130.24" y1="111.00" x2="132.24" y2="111.00" data-label-kind="condition-stub" data-edge-id="edge:G4O5S18I1" data-arrow-id="condition_stub:T20" data-transition-id="T20" data-condition-stub-id="condition_stub:T20"/>
+<text class="gate-label" x="132.64" y="111.00" data-label-kind="condition-stub" data-edge-id="edge:G4O5S18I1" data-arrow-id="condition_stub:T20" data-transition-id="T20" data-condition-stub-id="condition_stub:T20"><tspan x="132.64" dy="0">本地游標移動</tspan></text>
+<line class="gate" x1="165.55" y1="111.00" x2="167.55" y2="111.00" data-label-kind="condition-stub" data-edge-id="edge:G4O6S19I1" data-arrow-id="condition_stub:T21" data-transition-id="T21" data-condition-stub-id="condition_stub:T21"/>
+<text class="gate-label" x="167.95" y="111.00" data-label-kind="condition-stub" data-edge-id="edge:G4O6S19I1" data-arrow-id="condition_stub:T21" data-transition-id="T21" data-condition-stub-id="condition_stub:T21"><tspan x="167.95" dy="0">SSE 推送他人游標／presence 事件</tspan></text>
+<line class="gate" x1="200.86" y1="111.00" x2="202.86" y2="111.00" data-label-kind="condition-stub" data-edge-id="edge:G4O7S30I1" data-arrow-id="condition_stub:T22" data-transition-id="T22" data-condition-stub-id="condition_stub:T22"/>
+<text class="gate-label" x="203.26" y="111.00" data-label-kind="condition-stub" data-edge-id="edge:G4O7S30I1" data-arrow-id="condition_stub:T22" data-transition-id="T22" data-condition-stub-id="condition_stub:T22"><tspan x="203.26" dy="0">離開此提案或提案已被刪除</tspan></text>
+<line class="gate" x1="43.62" y1="83.00" x2="45.62" y2="83.00" data-label-kind="condition-stub" data-edge-id="edge:S14O1G7I2" data-arrow-id="condition_stub:T23" data-transition-id="T23" data-condition-stub-id="condition_stub:T23"/>
+<text class="gate-label-left" x="43.22" y="83.00" data-label-kind="condition-stub" data-edge-id="edge:S14O1G7I2" data-arrow-id="condition_stub:T23" data-transition-id="T23" data-condition-stub-id="condition_stub:T23"><tspan x="43.22" dy="0">伺服器裁決回覆（allow 則落定，deny 則回滾）</tspan></text>
+<line class="gate" x1="47.62" y1="81.00" x2="49.62" y2="81.00" data-label-kind="condition-stub" data-edge-id="edge:S15O1G7I3" data-arrow-id="condition_stub:T24" data-transition-id="T24" data-condition-stub-id="condition_stub:T24"/>
+<text class="gate-label-left" x="47.22" y="80.32" data-label-kind="condition-stub" data-edge-id="edge:S15O1G7I3" data-arrow-id="condition_stub:T24" data-transition-id="T24" data-condition-stub-id="condition_stub:T24"><tspan x="47.22" dy="0">伺服器裁決回覆</tspan></text>
+<line class="gate" x1="51.62" y1="79.00" x2="53.62" y2="79.00" data-label-kind="condition-stub" data-edge-id="edge:S16O1G7I4" data-arrow-id="condition_stub:T25" data-transition-id="T25" data-condition-stub-id="condition_stub:T25"/>
+<text class="gate-label" x="54.02" y="78.32" data-label-kind="condition-stub" data-edge-id="edge:S16O1G7I4" data-arrow-id="condition_stub:T25" data-transition-id="T25" data-condition-stub-id="condition_stub:T25"><tspan x="54.02" dy="0">伺服</tspan><tspan x="54.02" dy="0.68">器裁</tspan><tspan x="54.02" dy="0.68">決回覆</tspan></text>
+<line class="gate" x1="55.62" y1="77.00" x2="57.62" y2="77.00" data-label-kind="condition-stub" data-edge-id="edge:S17O1G7I5" data-arrow-id="condition_stub:T26" data-transition-id="T26" data-condition-stub-id="condition_stub:T26"/>
+<text class="gate-label" x="60.82" y="77.00" data-label-kind="condition-stub" data-edge-id="edge:S17O1G7I5" data-arrow-id="condition_stub:T26" data-transition-id="T26" data-condition-stub-id="condition_stub:T26"><tspan x="60.82" dy="0">伺服器裁決回覆；提案若已刪除則 13 的離開分支隨即成立</tspan></text>
+<line class="gate" x1="86.93" y1="100.00" x2="88.93" y2="100.00" data-label-kind="condition-stub" data-edge-id="edge:S18O1G8I2" data-arrow-id="condition_stub:T27" data-transition-id="T27" data-condition-stub-id="condition_stub:T27"/>
+<text class="gate-label-left" x="86.53" y="100.00" data-label-kind="condition-stub" data-edge-id="edge:S18O1G8I2" data-arrow-id="condition_stub:T27" data-transition-id="T27" data-condition-stub-id="condition_stub:T27"><tspan x="86.53" dy="0">節流窗口到期且已送出</tspan></text>
+<line class="gate" x1="90.93" y1="100.00" x2="92.93" y2="100.00" data-label-kind="condition-stub" data-edge-id="edge:S19O1G8I3" data-arrow-id="condition_stub:T28" data-transition-id="T28" data-condition-stub-id="condition_stub:T28"/>
+<text class="gate-label" x="93.33" y="99.32" data-label-kind="condition-stub" data-edge-id="edge:S19O1G8I3" data-arrow-id="condition_stub:T28" data-transition-id="T28" data-condition-stub-id="condition_stub:T28"><tspan x="93.33" dy="0">圖層</tspan><tspan x="93.33" dy="0.68">更新</tspan><tspan x="93.33" dy="0.68">完成</tspan></text>
+<line class="gate" x1="86.93" y1="44.00" x2="88.93" y2="44.00" data-label-kind="condition-stub" data-edge-id="edge:S30O1G6I3" data-arrow-id="condition_stub:T29" data-transition-id="T29" data-condition-stub-id="condition_stub:T29"/>
+<text class="gate-label-left" x="86.53" y="44.00" data-label-kind="condition-stub" data-edge-id="edge:S30O1G6I3" data-arrow-id="condition_stub:T29" data-transition-id="T29" data-condition-stub-id="condition_stub:T29"><tspan x="86.53" dy="0">連線已關閉</tspan></text>
+<line class="gate" x1="59.62" y1="25.00" x2="61.62" y2="25.00" data-label-kind="condition-stub" data-edge-id="edge:S90O1S0I1" data-arrow-id="condition_stub:T30" data-transition-id="T30" data-condition-stub-id="condition_stub:T30"/>
+<text class="gate-label" x="62.02" y="25.00" data-label-kind="condition-stub" data-edge-id="edge:S90O1S0I1" data-arrow-id="condition_stub:T30" data-transition-id="T30" data-condition-stub-id="condition_stub:T30"><tspan x="62.02" dy="0">人已修正並重新載入頁面</tspan></text>
+</svg>

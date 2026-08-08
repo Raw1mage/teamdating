@@ -1,0 +1,46 @@
+[hidden]{display:none!important}:root{--paper:#f7f4ed;--ink:#17201d;--line:#ded8cb;--soft:#726e64;--accent:#d85338;--accent2:#176e5b;--card:#fff;--danger:#b9382e}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 ui-rounded,"Noto Sans TC",system-ui,sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}.topbar{height:62px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:8px 18px;gap:12px}.topbar-left,.topbar-right{display:flex;align-items:center;gap:8px}.logo{border:0;background:var(--accent);color:#fff;font-weight:900;border-radius:10px;width:36px;height:36px}.crumb{font-weight:800}.topbar input{width:130px;padding:7px 9px;border:1px solid var(--line);border-radius:7px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px}.btn{border:0;border-radius:8px;padding:8px 12px;font-weight:750}.btn-ink{background:var(--ink);color:#fff}.btn-accent2{background:var(--accent2);color:#fff}.btn-ghost{background:#fff;border:1px solid var(--line)}.btn-danger-ghost{color:var(--danger);background:#fff;border:1px solid #e8bbb5}.btn-mini{padding:4px 8px;background:#fff;border:1px solid var(--line);font-size:12px}.full{width:100%}.list-wrap{max-width:920px;margin:auto;padding:32px 20px}.list-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:20px}h1,h2,h3,p{margin:0}.sub,.muted{color:var(--soft);font-size:13px}.proposal-list{display:grid;gap:10px}.proposal-card{padding:18px;border-left:5px solid var(--accent);cursor:pointer}.proposal-card:hover{box-shadow:0 5px 18px #261f1117}.proposal-stats,.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.chip{font-size:12px;padding:2px 7px;border-radius:999px;background:#f1ede4}.detail-head{background:#fff;border-bottom:1px solid var(--line)}.detail-head-inner{max-width:1500px;margin:auto;padding:14px 20px;display:flex;flex-direction:column;gap:10px}.detail-head-text{order:2;min-width:0}.d-desc,.d-meta{color:var(--soft);font-size:13px}.detail-head-meta{order:1;display:flex;flex-direction:row;align-items:center;justify-content:flex-end;gap:8px}.head-actions{display:flex;flex-direction:row;align-items:center;gap:8px}.d-title-row{display:flex;align-items:flex-start;gap:10px;min-width:0}.d-title-row h1{margin:0;font-size:19px;line-height:1.35;overflow-wrap:anywhere;word-break:break-word}.btn-share{color:var(--accent2)}.gear-wrap{position:relative}.gear-menu{position:absolute;right:0;top:calc(100% + 4px);z-index:15;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px #261f1122;min-width:150px;overflow:hidden;text-align:left}.gear-item{display:block;width:100%;border:0;background:#fff;padding:11px 14px;font-weight:700;text-align:left;font-size:14px}.gear-item:hover{background:#f4f0e7}.gear-item-danger{color:var(--danger)}.presence{display:flex;gap:3px;justify-content:end;margin:5px}.presence .dot{width:9px;height:9px;border-radius:50%}.detail-body{max-width:720px;margin:auto;padding:16px;display:flex;gap:16px;flex-direction:column}.pane-options{width:auto;display:flex;flex-direction:column;gap:10px}.btn-icon{width:32px;height:32px;padding:0;display:inline-flex;align-items:center;justify-content:center;font-size:19px;line-height:1;flex:0 0 auto}.options-card{min-height:0;display:flex;flex-direction:column;padding:14px}.options-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.option-list{overflow:auto;display:grid;gap:8px}.option{padding:10px;border:1px solid var(--line);border-radius:10px}.option.mine{border-color:var(--accent2)}.option-top{display:flex;justify-content:space-between;gap:8px}.option-actions{display:flex;gap:6px;margin-top:8px}.vote{flex:1;background:#fff;border:1px solid var(--line);border-radius:7px;padding:5px;font-weight:700}.vote.on{background:var(--accent2);color:#fff;border-color:var(--accent2)}.not-voted-box{border-top:1px solid var(--line);margin-top:10px;padding-top:8px}.not-voted-title{font-size:12px;font-weight:800}.modal,.gate{position:fixed;inset:0;background:#17201d66;z-index:20;display:grid;place-items:center;padding:20px}.gate{z-index:30;background:#f7f4edee}.modal-card,.gate-card{width:min(440px,100%);padding:22px}.field{display:block;font-size:12px;font-weight:700;margin:12px 0}.field input,.field textarea{display:block;width:100%;margin-top:4px;border:1px solid var(--line);border-radius:7px;padding:8px;resize:vertical}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.modal-actions{display:flex;gap:8px;margin-top:16px}.o-len{font-size:12px;color:var(--soft);height:18px}.recovery-code{display:block;overflow-wrap:anywhere;background:#f4f0e7;padding:8px;margin-top:4px}.toast-wrap{position:fixed;right:15px;bottom:15px;z-index:25}.toast{background:var(--ink);color:#fff;padding:9px 13px;border-radius:8px;margin-top:6px}.toast.error{background:var(--danger)}@media(max-width:780px){.topbar{height:auto;align-items:flex-start}.topbar-right{flex-wrap:wrap;justify-content:end}.list-head{align-items:flex-start;flex-direction:column}}
+
+.option.decided{border-color:#c9a227;box-shadow:inset 0 0 0 1px #c9a227}
+.badge-decided{margin-left:.5rem;padding:.05rem .4rem;border-radius:.6rem;background:#c9a227;color:#1a1a1a;font-size:.72rem;font-weight:700}
+button:disabled{opacity:.45;cursor:not-allowed}
+.tally{display:flex;gap:.35rem;margin:.25rem 0}
+.st{padding:.05rem .4rem;border-radius:.5rem;font-size:.72rem}
+.st-yes{background:#1f6f43;color:#e8f5ec}
+.st-maybe{background:#7a6320;color:#f5efdc}
+.st-no{background:#6f2626;color:#f5e3e3}
+.st-btn{flex:1;min-width:0}
+
+/* ── 獨立全螢幕月曆頁（手機優先視覺化） ── */
+.calpage-head{display:flex;align-items:center;gap:12px;max-width:960px;margin:auto;padding:14px 16px}
+.calpage-back{display:inline-flex;align-items:center;justify-content:center;padding:7px;line-height:0;color:var(--ink);flex:0 0 auto}
+.nav-back{width:36px;height:36px;padding:0;line-height:0;color:var(--ink);flex:0 0 auto}
+.options-head-left{display:flex;align-items:center;gap:8px}
+.calpage-title{font-size:18px;font-weight:900;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.calpage-legend{max-width:960px;margin:auto;padding:0 16px 8px;display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--soft)}
+.calpage-tip{color:var(--accent2);font-weight:700}
+.calpage-empty{max-width:960px;margin:auto;padding:40px 16px;color:var(--soft);text-align:center}
+.calpage-scroll{max-width:960px;margin:auto;padding:0 12px 60px}
+.calpage-month{margin-bottom:20px}
+.calpage-mtitle{position:sticky;top:0;z-index:2;background:var(--paper);padding:12px 2px 6px;font-weight:900;border-bottom:2px solid var(--ink)}
+.calpage-weekdays,.calpage-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+.calpage-weekdays div{text-align:center;font-size:12px;color:var(--soft);padding:6px 0}
+.calpage-grid{gap:2px;background:var(--line)}
+.calpage-cell{min-height:64px;background:#fff;padding:3px;display:flex;flex-direction:column;gap:2px}
+.calpage-cell.pad{background:#faf8f2}
+.calpage-cell.today{outline:2px solid var(--accent);outline-offset:-2px}
+.calpage-day{font-size:12px;color:var(--soft);font-weight:700;line-height:1}
+.calpage-lane{min-height:24px}
+.calpage-seg{min-height:24px;line-height:24px;color:#fff;font-size:11px;overflow:hidden;white-space:nowrap;padding:0 5px;border-radius:4px;cursor:pointer;font-weight:700;user-select:none;transition:filter .1s,opacity .1s}
+/* 未選：淡色，但仍明顯可點（不是真的變透明） */
+.calpage-seg.dim{opacity:.4}
+/* 可以：實色滿填（預設 background 已是作者色） */
+.calpage-seg.yes{opacity:1;box-shadow:inset 0 0 0 2px #ffffffaa}
+/* 不行：實色但疊一層叉畫的紅罩，一眼辨識「否決」 */
+.calpage-seg.no{opacity:1;background-image:repeating-linear-gradient(45deg,#0000 0 5px,#00000055 5px 7px);box-shadow:inset 0 0 0 2px var(--danger)}
+.calpage-seg:hover{filter:brightness(1.08)}
+.calpage-seg:active{filter:brightness(.88);transform:translateY(1px)}
+@media(max-width:780px){
+  .calpage-cell{min-height:56px}
+  .calpage-seg{font-size:10px;padding:0 2px}
+  .calpage-weekdays div{font-size:11px}
+}

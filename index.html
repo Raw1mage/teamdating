@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>旅行日期票選</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12130f; --paper:#f7f4ed; --line:#e3ddcf; --soft:#8b8578;
+    --accent:#d94f30; --accent2:#1f6f5c;
+  }
+  *{ box-sizing:border-box; }
+  body{ font-family:'Noto Sans TC',system-ui,sans-serif; background:var(--paper); color:var(--ink); }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:14px; }
+
+  /* ── 日曆：連續多月捲動 ───────────────────────── */
+  .m-title{
+    position:sticky; top:0; z-index:20; background:var(--paper);
+    padding:14px 2px 8px; font-size:1.05rem; font-weight:900;
+    border-bottom:2px solid var(--ink); margin-bottom:0;
+  }
+  .wk{
+    position:sticky; top:44px; z-index:19;
+    display:grid; grid-template-columns:repeat(7,minmax(0,1fr));
+    background:var(--paper); border-bottom:1px solid var(--line);
+  }
+  .wk div{ text-align:center; font-size:.68rem; font-weight:700; color:var(--soft); padding:5px 0; }
+  .grid7{ display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:1px; background:var(--line); }
+  .cell{ background:#fff; min-height:88px; padding:4px 0 6px; display:flex; flex-direction:column; }
+  .cell.pad{ background:#faf8f3; }
+  .cell.wknd{ background:#fdfcf8; }
+  .dnum{ font-size:.72rem; font-weight:700; color:var(--soft); padding:0 6px 4px; }
+  .today .dnum{ color:#fff; }
+  .today .dnum span{ background:var(--accent); border-radius:999px; padding:1px 6px; }
+  .lanes{ display:flex; flex-direction:column; gap:2px; }
+  .lane{ height:17px; }
+  .seg{
+    height:17px; display:flex; align-items:center; font-size:.63rem; font-weight:700;
+    color:#fff; white-space:nowrap; overflow:hidden; cursor:pointer; padding:0 4px;
+    transition:filter .15s;
+  }
+  .seg:hover{ filter:brightness(1.12); }
+  .seg.ghost{ opacity:.3; }
+  .seg.s{ border-radius:999px 0 0 999px; margin-left:3px; padding-left:7px; }
+  .seg.e{ border-radius:0 999px 999px 0; margin-right:3px; }
+  .seg.s.e{ border-radius:999px; }
+  .seg .n{ margin-left:auto; background:rgba(0,0,0,.3); border-radius:999px; padding:0 5px; flex-shrink:0; }
+
+  .chip{ font-size:.68rem; padding:1px 7px; border-radius:999px; font-weight:700; }
+  ::-webkit-scrollbar{ width:9px; height:9px; }
+  ::-webkit-scrollbar-thumb{ background:#d0cabb; border-radius:5px; }
+  ::-webkit-scrollbar-thumb:hover{ background:#b8b1a0; }
+  ::-webkit-scrollbar-track{ background:transparent; }
+
+  .gate{ position:fixed; inset:0; background:rgba(247,244,237,.98); z-index:200; display:flex; align-items:center; justify-content:center; padding:24px; }
+  .modal{ position:fixed; inset:0; background:rgba(18,19,15,.35); z-index:150; display:flex; align-items:center; justify-content:center; padding:20px; }
+  [hidden]{ display:none !important; }
+</style>
+</head>
+<body class="h-screen flex flex-col overflow-hidden">
+
+<!-- 阻斷式錯誤畫面 -->
+<div id="gate" class="gate" hidden>
+  <div class="card max-w-lg w-full p-7">
+    <h2 id="gate-title" class="text-lg font-black mb-3">無法啟動</h2>
+    <pre id="gate-body" class="text-xs whitespace-pre-wrap leading-relaxed text-gray-700 bg-gray-50 border border-gray-200 rounded-lg p-4 overflow-auto max-h-80"></pre>
+  </div>
+</div>
+
+<header class="bg-white border-b flex-shrink-0 px-5 py-2.5 flex items-center justify-between gap-3" style="border-color:var(--line)">
+  <div class="flex items-center gap-2.5 min-w-0">
+    <button id="nav-home" class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-black flex-shrink-0" style="background:var(--accent)" title="回到提案列表">旅</button>
+    <div id="crumb" class="min-w-0"></div>
+  </div>
+  <div class="flex items-center gap-2 flex-shrink-0">
+    <span id="me-dot" class="w-3.5 h-3.5 rounded-full" style="background:#c9c4b8"></span>
+    <input id="me-name" type="text" maxlength="16" placeholder="登記你的名字…"
+      class="text-sm px-3 py-1.5 rounded-lg border w-36 outline-none" style="border-color:var(--line)">
+    <button id="me-save" class="text-sm font-bold px-3 py-1.5 rounded-lg text-white" style="background:var(--ink)">登記</button>
+  </div>
+</header>
+
+<!-- ══════ 第一層：提案列表 ══════ -->
+<main id="view-list" class="flex-1 min-h-0 overflow-y-auto" hidden>
+  <div class="max-w-3xl mx-auto p-5">
+    <div class="flex items-end justify-between mb-5">
+      <div>
+        <h1 class="text-2xl font-black">提案列表</h1>
+        <p class="text-xs mt-0.5" style="color:var(--soft)">選一個提案進去，票選可行的日期區間</p>
+      </div>
+      <button id="b-new-proposal" class="text-sm font-black text-white px-4 py-2 rounded-lg flex-shrink-0" style="background:var(--accent2)">＋ 新增提案</button>
+    </div>
+    <div id="proposal-list" class="grid gap-3"></div>
+  </div>
+</main>
+
+<!-- ══════ 第二層：提案內頁 ══════ -->
+<main id="view-detail" class="flex-1 min-h-0 flex flex-col" hidden>
+  <div class="flex-shrink-0 bg-white border-b px-5 py-3" style="border-color:var(--line)">
+    <div class="max-w-[1500px] mx-auto">
+      <div class="flex items-start justify-between gap-4">
+        <div class="min-w-0">
+          <h1 id="d-title" class="text-xl font-black truncate"></h1>
+          <p id="d-desc" class="text-sm mt-1 whitespace-pre-wrap" style="color:var(--soft)"></p>
+        </div>
+        <div id="d-meta" class="text-right text-xs flex-shrink-0" style="color:var(--soft)"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-1 min-h-0 max-w-[1500px] w-full mx-auto p-4 flex flex-col lg:flex-row gap-4">
+    <!-- 左：可選項 -->
+    <aside class="w-full lg:w-[370px] flex-shrink-0 flex flex-col gap-3 min-h-0">
+      <button id="b-new-option" class="text-sm font-black text-white py-2.5 rounded-xl flex-shrink-0" style="background:var(--accent2)">＋ 新增可選項</button>
+      <div class="card flex-1 min-h-0 flex flex-col p-4">
+        <div class="flex items-baseline justify-between mb-3 flex-shrink-0">
+          <h2 class="text-sm font-black">可選項</h2>
+          <span id="o-count" class="text-[11px]" style="color:var(--soft)"></span>
+        </div>
+        <div id="option-list" class="flex-1 overflow-y-auto space-y-2.5 pr-1"></div>
+      </div>
+    </aside>
+
+    <!-- 右：連續捲動日曆 -->
+    <section class="flex-1 min-w-0 card flex flex-col overflow-hidden">
+      <div class="flex-shrink-0 px-4 py-2.5 border-b flex items-center justify-between" style="border-color:var(--line)">
+        <h2 class="text-sm font-black">日曆</h2>
+        <div class="flex items-center gap-2">
+          <span class="text-[11px]" style="color:var(--soft)">滿色＝你已投・淡色＝未投</span>
+          <button id="b-scroll-today" class="text-[11px] font-bold px-2.5 py-1 rounded-lg border" style="border-color:var(--line)">今天</button>
+        </div>
+      </div>
+      <div id="cal-scroll" class="flex-1 overflow-y-auto px-4 pb-8"></div>
+    </section>
+  </div>
+</main>
+
+<!-- 新增提案 modal -->
+<div id="m-proposal" class="modal" hidden>
+  <form id="f-proposal" class="card w-full max-w-md p-6">
+    <h2 class="text-lg font-black mb-4">新增提案</h2>
+    <label class="block text-[11px] font-bold mb-3" style="color:var(--soft)">提案名稱
+      <input id="p-title" required maxlength="40" placeholder="例：秋季日本團"
+        class="mt-1 w-full text-sm rounded-lg border px-3 py-2 outline-none" style="border-color:var(--line)">
+    </label>
+    <label class="block text-[11px] font-bold mb-5" style="color:var(--soft)">說明（選填）
+      <textarea id="p-desc" rows="3" maxlength="300" placeholder="目的地、預算、注意事項…"
+        class="mt-1 w-full text-sm rounded-lg border px-3 py-2 outline-none resize-none" style="border-color:var(--line)"></textarea>
+    </label>
+    <div class="flex gap-2">
+      <button type="button" data-close class="flex-1 text-sm font-bold py-2 rounded-lg border" style="border-color:var(--line)">取消</button>
+      <button type="submit" class="flex-1 text-sm font-black text-white py-2 rounded-lg" style="background:var(--accent2)">建立</button>
+    </div>
+  </form>
+</div>
+
+<!-- 新增可選項 modal -->
+<div id="m-option" class="modal" hidden>
+  <form id="f-option" class="card w-full max-w-md p-6">
+    <h2 class="text-lg font-black mb-4">新增可選項</h2>
+    <div class="grid grid-cols-2 gap-3 mb-2">
+      <label class="text-[11px] font-bold" style="color:var(--soft)">開始
+        <input type="date" id="o-start" required class="mt-1 w-full text-sm rounded-lg border px-2 py-2 outline-none" style="border-color:var(--line)">
+      </label>
+      <label class="text-[11px] font-bold" style="color:var(--soft)">結束
+        <input type="date" id="o-end" required class="mt-1 w-full text-sm rounded-lg border px-2 py-2 outline-none" style="border-color:var(--line)">
+      </label>
+    </div>
+    <p id="o-len" class="text-[11px] mb-4 h-4" style="color:var(--soft)"></p>
+    <label class="block text-[11px] font-bold mb-5" style="color:var(--soft)">備註（選填）
+      <input id="o-note" maxlength="30" placeholder="例：避開連假"
+        class="mt-1 w-full text-sm rounded-lg border px-3 py-2 outline-none" style="border-color:var(--line)">
+    </label>
+    <div class="flex gap-2">
+      <button type="button" data-close class="flex-1 text-sm font-bold py-2 rounded-lg border" style="border-color:var(--line)">取消</button>
+      <button type="submit" class="flex-1 text-sm font-black text-white py-2 rounded-lg" style="background:var(--accent2)">加入</button>
+    </div>
+  </form>
+</div>
+
+<div id="toast" class="fixed bottom-4 right-4 z-[180] flex flex-col gap-2 items-end"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+import { getFirestore, collection, doc, addDoc, setDoc, deleteDoc, onSnapshot, serverTimestamp }
+  from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+/* ═══════════════════════════════════════════════════════
+   設定 — 換成你自己的 Firebase 專案設定
+   Console → 專案設定 → 你的應用程式 → SDK 設定
+   規則另需部署：見同目錄 firestore.rules
+   ═══════════════════════════════════════════════════════ */
+const FALLBACK_CONFIG = {
+  apiKey:            "REPLACE_ME",
+  authDomain:        "REPLACE_ME",
+  projectId:         "REPLACE_ME",
+  storageBucket:     "REPLACE_ME",
+  messagingSenderId: "REPLACE_ME",
+  appId:             "REPLACE_ME",
+};
+
+const appId  = typeof __app_id !== 'undefined' ? __app_id : 'travel-vote';
+const config = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : FALLBACK_CONFIG;
+const token  = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+/* ── 狀態 ─────────────────────────────────────────────── */
+const S = {
+  uid: null,
+  ready: false,
+  route: { view:'list', id:null },
+  users:     new Map(),  // uid -> { name }
+  proposals: [],         // { id, uid, title, desc }
+  options:   [],         // { id, proposalId, uid, startDate, endDate, note }
+  votes:     [],         // { id, optionId, proposalId, uid }
+};
+let db = null;
+
+const PALETTE = ['#d94f30','#e08b1e','#b39000','#4e9a2f','#1f8a70','#2f7fbf','#4b57c9','#8046c4','#c03f8c','#a3562b','#5c7a1e','#0f766e','#b8453f','#3d6ea8'];
+const colorOf = key => {
+  if (!key) return '#9ca3af';
+  let h = 0; for (const c of key) h = (c.codePointAt(0) + ((h << 5) - h)) | 0;
+  return PALETTE[Math.abs(h) % PALETTE.length];
+};
+const nameOf = uid => S.users.get(uid)?.name || '（未登記）';
+
+/* ── 工具 ─────────────────────────────────────────────── */
+const $  = id => document.getElementById(id);
+const el = (tag, cls, txt) => { const n = document.createElement(tag); if (cls) n.className = cls; if (txt != null) n.textContent = txt; return n; };
+const ymd = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const days = (a,b) => Math.round((new Date(b+'T00:00:00') - new Date(a+'T00:00:00')) / 86400000) + 1;
+
+function toast(msg, kind='info'){
+  const n = el('div','text-white text-sm font-bold px-4 py-2.5 rounded-lg shadow-lg transition-all duration-300 translate-y-3 opacity-0', msg);
+  n.style.background = kind==='error' ? '#c2321a' : kind==='ok' ? '#1f6f5c' : '#12130f';
+  $('toast').appendChild(n);
+  requestAnimationFrame(() => n.classList.remove('translate-y-3','opacity-0'));
+  setTimeout(() => { n.classList.add('translate-y-3','opacity-0'); setTimeout(()=>n.remove(),300); }, 2800);
+}
+function fail(title, detail){
+  $('gate-title').textContent = title;
+  $('gate-body').textContent  = detail;
+  $('gate').hidden = false;
+}
+
+/* ── 衍生查詢 ─────────────────────────────────────────── */
+const optionsOf   = pid => S.options.filter(o => o.proposalId === pid);
+const votersOf    = oid => S.votes.filter(v => v.optionId === oid).map(v => v.uid);
+const iVoted      = oid => S.votes.some(v => v.optionId === oid && v.uid === S.uid);
+const registered  = () => (S.users.get(S.uid)?.name || '').trim().length > 0;
+const participants = pid => {
+  const set = new Set(optionsOf(pid).map(o => o.uid));
+  S.votes.filter(v => v.proposalId === pid).forEach(v => set.add(v.uid));
+  return set;
+};
+// 依票數排序；票數同則早的、長的在前
+const rankedOptions = pid => optionsOf(pid)
+  .map(o => ({ ...o, votes: votersOf(o.id).length }))
+  .sort((a,b) => b.votes - a.votes || a.startDate.localeCompare(b.startDate) || b.endDate.localeCompare(a.endDate));
+
+/* 區間圖著色：不重疊的可選項共用同一條軌道，
+   讓同一個可選項在跨週／跨月時都落在同一列，視覺上成為連續帶狀。 */
+function assignLanes(opts){
+  const lanes = [];               // lanes[i] = 該軌道目前最後一天
+  const map = new Map();
+  [...opts].sort((a,b) => a.startDate.localeCompare(b.startDate) || a.endDate.localeCompare(b.endDate))
+    .forEach(o => {
+      let i = lanes.findIndex(last => last < o.startDate);
+      if (i === -1) { i = lanes.length; lanes.push(o.endDate); }
+      else lanes[i] = o.endDate;
+      map.set(o.id, i);
+    });
+  return { map, count: lanes.length };
+}
+
+/* ── 寫入 ─────────────────────────────────────────────── */
+const col  = n      => collection(db, 'artifacts', appId, 'public', 'data', n);
+const dref = (n,id) => doc(db, 'artifacts', appId, 'public', 'data', n, id);
+
+async function saveName(){
+  const name = $('me-name').value.trim();
+  if (!name) { toast('請先輸入名字','error'); return; }
+  try {
+    await setDoc(dref('travel_users', S.uid), { name, updatedAt: serverTimestamp() }, { merge:true });
+    toast(`已登記為「${name}」`,'ok');
+  } catch(e){ console.error(e); toast('登記失敗：' + (e.code||e.message),'error'); }
+}
+
+async function removeProposal(pid){
+  const opts = optionsOf(pid);
+  await Promise.all(S.votes.filter(v => v.proposalId === pid).map(v => deleteDoc(dref('travel_votes', v.id))));
+  await Promise.all(opts.map(o => deleteDoc(dref('travel_options', o.id))));
+  await deleteDoc(dref('travel_proposals', pid));
+}
+
+async function removeOption(oid){
+  await Promise.all(votersOf(oid).map(u => deleteDoc(dref('travel_votes', `${oid}__${u}`))));
+  await deleteDoc(dref('travel_options', oid));
+}
+
+async function toggleVote(o){
+  if (!registered()) { toast('請先在右上角登記名字','error'); return; }
+  const id = `${o.id}__${S.uid}`;
+  try {
+    if (iVoted(o.id)) await deleteDoc(dref('travel_votes', id));
+    else await setDoc(dref('travel_votes', id), { optionId:o.id, proposalId:o.proposalId, uid:S.uid, createdAt: serverTimestamp() });
+  } catch(e){ console.error(e); toast('投票失敗：' + (e.code||e.message),'error'); }
+}
+
+/* ── 路由 ─────────────────────────────────────────────── */
+function readRoute(){
+  const m = location.hash.match(/^#\/p\/([A-Za-z0-9_-]+)/);
+  S.route = m ? { view:'detail', id:m[1] } : { view:'list', id:null };
+}
+function go(hash){ location.hash = hash; }
+window.addEventListener('hashchange', () => { readRoute(); render(); });
+
+/* ── 繪製 ─────────────────────────────────────────────── */
+function render(){
+  renderMe();
+  const p = S.route.view === 'detail' ? S.proposals.find(x => x.id === S.route.id) : null;
+
+  // 提案不存在（被刪或連結失效）→ 退回列表，但只在資料就緒後才判定
+  if (S.route.view === 'detail' && S.ready && !p){
+    toast('這個提案已不存在','error');
+    go('#/'); return;
+  }
+
+  $('view-list').hidden   = S.route.view !== 'list';
+  $('view-detail').hidden = S.route.view !== 'detail';
+
+  const crumb = $('crumb'); crumb.textContent = '';
+  if (S.route.view === 'list'){
+    crumb.appendChild(el('div','text-lg font-black leading-tight','旅行日期票選'));
+    renderProposalList();
+  } else {
+    const b = el('button','text-xs font-bold hover:underline','‹ 返回提案列表');
+    b.style.color = 'var(--soft)';
+    b.onclick = () => go('#/');
+    crumb.appendChild(b);
+    if (p) renderDetail(p);
+  }
+}
+
+function renderMe(){
+  $('me-dot').style.background = colorOf(S.uid);
+  if (document.activeElement !== $('me-name')) $('me-name').value = S.users.get(S.uid)?.name || '';
+}
+
+/* ── 第一層 ───────────────────────────────────────────── */
+function renderProposalList(){
+  const box = $('proposal-list'); box.textContent = '';
+
+  if (!S.ready){ box.appendChild(el('p','text-sm text-center py-16','載入中…')).style.color = 'var(--soft)'; return; }
+  if (!S.proposals.length){
+    const empty = el('div','card p-10 text-center');
+    empty.appendChild(el('p','text-sm font-bold mb-1','還沒有任何提案'));
+    const sub = el('p','text-xs','按右上角「＋ 新增提案」開始第一趟旅行');
+    sub.style.color = 'var(--soft)';
+    empty.appendChild(sub);
+    box.appendChild(empty);
+    return;
+  }
+
+  [...S.proposals].sort((a,b) => (b.createdAtMs||0) - (a.createdAtMs||0)).forEach(p => {
+    const opts = rankedOptions(p.id);
+    const people = participants(p.id);
+    const top = opts[0];
+
+    const card = el('div','card p-4 hover:shadow-md transition-shadow cursor-pointer');
+    card.style.borderLeft = `5px solid ${colorOf(p.id)}`;
+    card.onclick = () => go(`#/p/${p.id}`);
+
+    const head = el('div','flex items-start justify-between gap-3');
+    const left = el('div','min-w-0 flex-1');
+    left.appendChild(el('h3','text-base font-black truncate', p.title));
+    if (p.desc){
+      const d = el('p','text-xs mt-1 line-clamp-2', p.desc);
+      d.style.color = 'var(--soft)';
+      left.appendChild(d);
+    }
+    head.appendChild(left);
+    head.appendChild(el('div','text-xl font-black flex-shrink-0','›')).style.color = 'var(--soft)';
+    card.appendChild(head);
+
+    const stats = el('div','flex items-center gap-2 mt-3 flex-wrap');
+    const s1 = el('span','chip', `${opts.length} 個可選項`);
+    s1.style.cssText = 'background:#f1eee5;color:#6b675c';
+    stats.appendChild(s1);
+    const s2 = el('span','chip', `${people.size} 人參與`);
+    s2.style.cssText = 'background:#f1eee5;color:#6b675c';
+    stats.appendChild(s2);
+    if (top && top.votes > 0){
+      const s3 = el('span','chip', `領先：${top.startDate} → ${top.endDate}（${top.votes} 票）`);
+      s3.style.cssText = `background:${colorOf(top.uid)}1a;color:${colorOf(top.uid)}`;
+      stats.appendChild(s3);
+    }
+    card.appendChild(stats);
+
+    if (p.uid === S.uid){
+      const del = el('button','text-[11px] font-bold mt-3 text-red-600 hover:underline','刪除這個提案');
+      del.onclick = async ev => {
+        ev.stopPropagation();
+        if (!confirm(`刪除提案「${p.title}」？其下所有可選項與票數都會一併移除。`)) return;
+        try { await removeProposal(p.id); toast('已刪除提案','ok'); }
+        catch(e){ console.error(e); toast('刪除失敗：' + (e.code||e.message),'error'); }
+      };
+      card.appendChild(del);
+    }
+    box.appendChild(card);
+  });
+}
+
+/* ── 第二層 ───────────────────────────────────────────── */
+function renderDetail(p){
+  $('d-title').textContent = p.title;
+  $('d-desc').textContent  = p.desc || '';
+  $('d-desc').hidden       = !p.desc;
+
+  const opts = rankedOptions(p.id);
+  const people = participants(p.id);
+  const meta = $('d-meta'); meta.textContent = '';
+  meta.appendChild(el('div','', `發起人 ${nameOf(p.uid)}`));
+  meta.appendChild(el('div','font-bold', `${opts.length} 個可選項 · ${people.size} 人參與`));
+
+  renderOptionList(p, opts, people.size);
+  renderCalendar(p, opts);
+}
+
+function renderOptionList(p, opts, headcount){
+  const box = $('option-list'); box.textContent = '';
+  $('o-count').textContent = `${opts.length} 個`;
+
+  if (!opts.length){
+    const e = el('p','text-xs text-center py-10','還沒有可選項。\n按上方按鈕新增一段日期。');
+    e.style.cssText = 'color:var(--soft);white-space:pre-line';
+    box.appendChild(e);
+    return;
+  }
+
+  const best = opts[0].votes > 0 ? opts[0].votes : -1;
+
+  opts.forEach(o => {
+    const c = colorOf(o.uid);
+    const voters = votersOf(o.id);
+    const voted = iVoted(o.id);
+
+    const card = el('div','rounded-xl border p-3');
+    card.style.borderColor = voted ? c : 'var(--line)';
+    card.style.background  = voted ? c + '0d' : '#fff';
+
+    const top = el('div','flex items-start gap-2.5');
+    const dot = el('span','w-2.5 h-2.5 rounded-full mt-1.5 flex-shrink-0');
+    dot.style.background = c;
+    const info = el('div','flex-1 min-w-0');
+    const row1 = el('div','flex items-center gap-1.5');
+    row1.appendChild(el('span','text-sm font-black', `${o.startDate} → ${o.endDate}`));
+    if (o.votes === best){
+      const star = el('span','chip','領先');
+      star.style.cssText = `background:${c}1f;color:${c}`;
+      row1.appendChild(star);
+    }
+    info.appendChild(row1);
+    const sub = el('div','text-[11px] mt-0.5', `${days(o.startDate,o.endDate)} 天${o.note ? ' · ' + o.note : ''} · ${nameOf(o.uid)} 提出`);
+    sub.style.color = 'var(--soft)';
+    info.appendChild(sub);
+    const cnt = el('div','text-right flex-shrink-0');
+    cnt.appendChild(el('div','text-lg font-black leading-none', String(o.votes)));
+    const unit = el('div','text-[10px]', headcount ? `/${headcount} 票` : '票');
+    unit.style.color = 'var(--soft)';
+    cnt.appendChild(unit);
+    top.append(dot, info, cnt);
+    card.appendChild(top);
+
+    const who = el('div','flex flex-wrap gap-1 mt-2.5');
+    if (!voters.length){
+      const s = el('span','text-[11px]','尚無人投票');
+      s.style.color = 'var(--soft)';
+      who.appendChild(s);
+    } else {
+      voters.forEach(u => {
+        const chip = el('span','chip', nameOf(u));
+        chip.style.cssText = `background:${colorOf(u)}1f;color:${colorOf(u)}`;
+        who.appendChild(chip);
+      });
+    }
+    card.appendChild(who);
+
+    const act = el('div','flex gap-2 mt-3');
+    const vb = el('button','flex-1 text-xs font-black py-1.5 rounded-lg border transition-colors');
+    if (voted){ vb.textContent = '✓ 已投（點擊取消）'; vb.style.cssText = `background:${c};color:#fff;border-color:${c}`; }
+    else      { vb.textContent = '投這個';            vb.style.cssText = 'border-color:var(--line)'; }
+    vb.onclick = () => toggleVote(o);
+    act.appendChild(vb);
+
+    if (o.uid === S.uid){
+      const del = el('button','text-xs font-bold px-2.5 rounded-lg border text-red-600 hover:bg-red-50','刪除');
+      del.style.borderColor = 'var(--line)';
+      del.onclick = async () => {
+        if (!confirm('刪除這個可選項？其票數會一併移除。')) return;
+        try { await removeOption(o.id); toast('已刪除','ok'); }
+        catch(e){ console.error(e); toast('刪除失敗：' + (e.code||e.message),'error'); }
+      };
+      act.appendChild(del);
+    }
+    card.appendChild(act);
+    box.appendChild(card);
+  });
+}
+
+/* ── 連續多月捲動日曆 ─────────────────────────────────── */
+function renderCalendar(p, opts){
+  const host = $('cal-scroll');
+  const keepTop = host.scrollTop;      // 重繪不跳位（onSnapshot 會頻繁重繪）
+  host.textContent = '';
+
+  const { map: lane, count: laneCount } = assignLanes(opts);
+  const todayStr = ymd(new Date());
+
+  // 顯示範圍：涵蓋今天與所有可選項，前後各留 1 個月
+  const marks = [todayStr, ...opts.map(o => o.startDate), ...opts.map(o => o.endDate)].sort();
+  const first = new Date(marks[0] + 'T00:00:00');
+  const last  = new Date(marks[marks.length-1] + 'T00:00:00');
+  let cur = new Date(first.getFullYear(), first.getMonth() - 1, 1);
+  const end = new Date(last.getFullYear(), last.getMonth() + 1, 1);
+
+  while (cur <= end){
+    host.appendChild(monthBlock(cur.getFullYear(), cur.getMonth(), opts, lane, laneCount, todayStr));
+    cur = new Date(cur.getFullYear(), cur.getMonth() + 1, 1);
+  }
+
+  host.scrollTop = keepTop;
+  if (!host.dataset.scrolled){        // 首次進入自動捲到今天
+    host.dataset.scrolled = '1';
+    requestAnimationFrame(() => scrollToToday(false));
+  }
+}
+
+function monthBlock(y, m, opts, lane, laneCount, todayStr){
+  const wrap = el('section','');
+  wrap.dataset.month = `${y}-${String(m+1).padStart(2,'0')}`;
+
+  wrap.appendChild(el('div','m-title', `${y} 年 ${m+1} 月`));
+
+  const wk = el('div','wk');
+  ['日','一','二','三','四','五','六'].forEach(d => wk.appendChild(el('div','',d)));
+  wrap.appendChild(wk);
+
+  const grid = el('div','grid7');
+  const lead  = new Date(y, m, 1).getDay();
+  const total = new Date(y, m+1, 0).getDate();
+
+  for (let i = 0; i < lead; i++) grid.appendChild(el('div','cell pad'));
+
+  for (let d = 1; d <= total; d++){
+    const date = new Date(y, m, d), ds = ymd(date);
+    const dow = date.getDay();
+    const cell = el('div','cell' + (ds === todayStr ? ' today' : (dow === 0 || dow === 6 ? ' wknd' : '')));
+
+    const num = el('div','dnum');
+    num.appendChild(el('span','', String(d)));
+    cell.appendChild(num);
+
+    const lanes = el('div','lanes');
+    const active = new Map();
+    opts.forEach(o => { if (ds >= o.startDate && ds <= o.endDate) active.set(lane.get(o.id), o); });
+
+    for (let i = 0; i < laneCount; i++){
+      const row = el('div','lane');
+      const o = active.get(i);
+      if (o){
+        const isS = ds === o.startDate, isE = ds === o.endDate;
+        const seg = el('div', 'seg' + (isS?' s':'') + (isE?' e':'') + (iVoted(o.id)?'':' ghost'));
+        seg.style.background = colorOf(o.uid);
+        seg.title = `${o.startDate} → ${o.endDate}（${days(o.startDate,o.endDate)}天）\n${o.note ? o.note + '\n' : ''}${nameOf(o.uid)} 提出 · ${o.votes} 票\n投票者：${votersOf(o.id).map(nameOf).join('、') || '無'}\n\n點擊可切換投票`;
+        seg.onclick = () => toggleVote(o);
+        // 只在起點、每週日、每月 1 號重印文字，避免整條重複
+        if (isS || dow === 0 || d === 1){
+          seg.appendChild(el('span','truncate', nameOf(o.uid)));
+          seg.appendChild(el('span','n', String(o.votes)));
+        }
+        row.appendChild(seg);
+      }
+      lanes.appendChild(row);
+    }
+    cell.appendChild(lanes);
+    grid.appendChild(cell);
+  }
+
+  const used = lead + total, rest = used % 7 === 0 ? 0 : 7 - (used % 7);
+  for (let i = 0; i < rest; i++) grid.appendChild(el('div','cell pad'));
+
+  wrap.appendChild(grid);
+  return wrap;
+}
+
+function scrollToToday(smooth = true){
+  const now = new Date();
+  const key = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+  const target = $('cal-scroll').querySelector(`[data-month="${key}"]`);
+  if (target) target.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block:'start' });
+}
+
+/* ── Modal ────────────────────────────────────────────── */
+function openModal(id){ $(id).hidden = false; }
+function closeModal(id){ $(id).hidden = true; }
+document.querySelectorAll('[data-close]').forEach(b => b.onclick = () => { closeModal('m-proposal'); closeModal('m-option'); });
+['m-proposal','m-option'].forEach(id => {
+  $(id).addEventListener('mousedown', e => { if (e.target.id === id) closeModal(id); });
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape'){ closeModal('m-proposal'); closeModal('m-option'); } });
+
+/* ── 事件 ─────────────────────────────────────────────── */
+$('nav-home').onclick = () => go('#/');
+$('me-save').onclick  = saveName;
+$('me-name').addEventListener('keydown', e => { if (e.key === 'Enter') saveName(); });
+$('b-scroll-today').onclick = () => scrollToToday(true);
+
+$('b-new-proposal').onclick = () => {
+  if (!registered()){ toast('請先在右上角登記名字','error'); $('me-name').focus(); return; }
+  $('f-proposal').reset(); openModal('m-proposal'); setTimeout(()=>$('p-title').focus(), 50);
+};
+
+$('f-proposal').addEventListener('submit', async e => {
+  e.preventDefault();
+  if (!registered()){ toast('請先登記名字','error'); return; }
+  const title = $('p-title').value.trim();
+  if (!title) return;
+  const btn = e.target.querySelector('button[type=submit]');
+  btn.disabled = true; btn.textContent = '建立中…';
+  try {
+    const ref = await addDoc(col('travel_proposals'), {
+      uid: S.uid, title, desc: $('p-desc').value.trim(),
+      createdAt: serverTimestamp(), createdAtMs: Date.now(),
+    });
+    closeModal('m-proposal');
+    toast('已建立提案','ok');
+    go(`#/p/${ref.id}`);
+  } catch(err){ console.error(err); toast('建立失敗：' + (err.code||err.message),'error'); }
+  finally { btn.disabled = false; btn.textContent = '建立'; }
+});
+
+$('b-new-option').onclick = () => {
+  if (!registered()){ toast('請先在右上角登記名字','error'); $('me-name').focus(); return; }
+  const t1 = new Date(); t1.setDate(t1.getDate() + 7);
+  const t2 = new Date(); t2.setDate(t2.getDate() + 10);
+  $('f-option').reset();
+  $('o-start').value = ymd(t1);
+  $('o-end').value   = ymd(t2);
+  updateLen();
+  openModal('m-option');
+};
+
+function updateLen(){
+  const s = $('o-start').value, e = $('o-end').value;
+  $('o-len').textContent = (s && e && s <= e) ? `共 ${days(s,e)} 天 ${days(s,e)-1} 夜` : (s && e ? '⚠ 結束日期早於開始日期' : '');
+}
+$('o-start').addEventListener('change', updateLen);
+$('o-end').addEventListener('change', updateLen);
+
+$('f-option').addEventListener('submit', async e => {
+  e.preventDefault();
+  const pid = S.route.id;
+  if (!pid) return;
+  if (!registered()){ toast('請先登記名字','error'); return; }
+  const s = $('o-start').value, en = $('o-end').value;
+  if (!s || !en) return;
+  if (s > en){ toast('結束日期不能早於開始日期','error'); return; }
+  if (optionsOf(pid).some(o => o.startDate === s && o.endDate === en)){ toast('這個提案已有完全相同的區間','error'); return; }
+
+  const btn = e.target.querySelector('button[type=submit]');
+  btn.disabled = true; btn.textContent = '加入中…';
+  try {
+    await addDoc(col('travel_options'), {
+      proposalId: pid, uid: S.uid, startDate: s, endDate: en,
+      note: $('o-note').value.trim(), createdAt: serverTimestamp(),
+    });
+    closeModal('m-option');
+    toast('已新增可選項','ok');
+  } catch(err){ console.error(err); toast('新增失敗：' + (err.code||err.message),'error'); }
+  finally { btn.disabled = false; btn.textContent = '加入'; }
+});
+
+/* ── 啟動 ─────────────────────────────────────────────── */
+const LOADED = new Set();
+function listen(name, key){
+  onSnapshot(col(name),
+    snap => {
+      if (key === 'users'){
+        S.users = new Map();
+        snap.forEach(d => { const v = d.data(); if (v.name) S.users.set(d.id, { name:v.name }); });
+      } else {
+        S[key] = snap.docs.map(d => ({ id:d.id, ...d.data() }));
+      }
+      LOADED.add(key);
+      if (LOADED.size === 4) S.ready = true;
+      render();
+    },
+    err => {
+      console.error(name, err);
+      fail('資料同步失敗', `集合：${name}\n${err.code}\n${err.message}\n\n多半是 Firestore 安全性規則未部署。請部署同目錄的 firestore.rules。`);
+    }
+  );
+}
+
+async function boot(){
+  const missing = Object.entries(config).filter(([,v]) => !v || v === 'REPLACE_ME').map(([k]) => k);
+  if (missing.length){
+    fail('尚未設定 Firebase',
+      `index.html 的 FALLBACK_CONFIG 還有欄位沒填：\n  ${missing.join(', ')}\n\n步驟：\n 1. Firebase Console 建立專案\n 2. Authentication → 啟用「匿名登入」\n 3. 建立 Firestore 資料庫\n 4. 部署 firestore.rules\n 5. 把「專案設定 → 你的應用程式 → SDK 設定」的 firebaseConfig 貼進 index.html`);
+    return;
+  }
+  let auth;
+  try {
+    const app = initializeApp(config);
+    db = getFirestore(app); auth = getAuth(app);
+    if (token) await signInWithCustomToken(auth, token);
+    else       await signInAnonymously(auth);
+  } catch(e){
+    console.error(e);
+    fail('Firebase 初始化失敗', `${e.code || ''}\n${e.message}\n\n若是 auth/configuration-not-found，代表 Console 尚未啟用「匿名登入」。`);
+    return;
+  }
+  onAuthStateChanged(auth, user => {
+    if (!user || S.uid) return;        // 只接線一次
+    S.uid = user.uid;
+    listen('travel_users',     'users');
+    listen('travel_proposals', 'proposals');
+    listen('travel_options',   'options');
+    listen('travel_votes',     'votes');
+    render();
+  });
+}
+
+readRoute();
+render();
+boot();
+</script>
+</body>
+</html>

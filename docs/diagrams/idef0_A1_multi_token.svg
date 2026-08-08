@@ -1,0 +1,66 @@
+<svg width="1332.0" height="795.8" viewBox="-296.0 -210.0 1332.0 795.8" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="black" /></marker>
+<marker id="call_arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 M 0 2 L 6 5 L 0 8" fill="none" stroke="black" stroke-width="1" /></marker>
+</defs>
+<rect x="-296.0" y="-210.0" width="1332.0" height="795.8" fill="white" />
+<rect x="130.0" y="120.0" width="200.0" height="120.0" stroke="black" fill="white" stroke-width="1.5" data-id="A1" />
+<text x="230.0" y="159.9" text-anchor="middle" font-size="26" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A1" >A1</text>
+<text x="230.0" y="207.0" text-anchor="middle" font-size="28" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A1" >解析請求身分</text>
+<rect x="450.0" y="120.0" width="200.0" height="120.0" stroke="black" fill="white" stroke-width="1.5" data-id="A2" />
+<text x="550.0" y="159.9" text-anchor="middle" font-size="26" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A2" >A2</text>
+<text x="550.0" y="207.0" text-anchor="middle" font-size="28" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A2" >接回既有身分</text>
+<rect x="130.0" y="380.0" width="200.0" height="120.0" stroke="black" fill="white" stroke-width="1.5" data-id="A3" />
+<text x="230.0" y="425.0" text-anchor="middle" font-size="16" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A3" >A3</text>
+<text x="230.0" y="457.8" text-anchor="middle" font-size="18" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A3" >維持 TOKEN 集合上限</text>
+<rect x="450.0" y="380.0" width="200.0" height="120.0" stroke="black" fill="white" stroke-width="1.5" data-id="A4" />
+<text x="550.0" y="421.9" text-anchor="middle" font-size="22" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A4" >A4</text>
+<text x="550.0" y="463.4" text-anchor="middle" font-size="24" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A4" >持久化與重建狀態</text>
+<rect x="0.0" y="0.0" width="740.0" height="575.8" stroke="black" fill="none" stroke-width="2" />
+<rect x="207.5" y="-200.0" width="325.0" height="110.0" stroke="black" fill="white" stroke-width="1.5" data-id="A0" />
+<text x="370.0" y="-159.0" text-anchor="middle" font-size="14" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A0" >A0</text>
+<text x="370.0" y="-129.0" text-anchor="middle" font-size="16" font-weight="bold" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-id="A0" >一 USER 多 TOKEN 身分解析與裝置接回</text>
+<line x1="207.5" y1="-200.0" x2="0.0" y2="0.0" stroke="red" stroke-dasharray="5,5" stroke-width="1.0" opacity="0.6" />
+<line x1="532.5" y1="-200.0" x2="740.0" y2="0.0" stroke="red" stroke-dasharray="5,5" stroke-width="1.0" opacity="0.6" />
+<line x1="207.5" y1="-90.0" x2="0.0" y2="575.8" stroke="red" stroke-dasharray="5,5" stroke-width="1.0" opacity="0.6" />
+<line x1="532.5" y1="-90.0" x2="740.0" y2="575.8" stroke="red" stroke-dasharray="5,5" stroke-width="1.0" opacity="0.6" />
+<path d="M 330.0 440.0 L 450.0 440.0" stroke="black" stroke-width="1.2" data-arrow-id="AR11" data-waypoints="330.0,440.0 450.0,440.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 650.0 180.0 L 680.0 180.0 Q 690.0 180.0 690.0 190.0 L 690.0 320.0 Q 690.0 330.0 680.0 330.0 L 100.0 330.0 Q 90.0 330.0 90.0 340.0 L 90.0 410.0 Q 90.0 420.0 100.0 420.0 L 130.0 420.0" stroke="black" stroke-width="1.2" data-arrow-id="AR8" data-waypoints="650.0,180.0 690.0,180.0 690.0,330.0 90.0,330.0 90.0,420.0 130.0,420.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 330.0 200.0 L 360.0 200.0 Q 370.0 200.0 370.0 210.0 L 370.0 280.0 Q 370.0 290.0 360.0 290.0 L 60.0 290.0 Q 50.0 290.0 50.0 300.0 L 50.0 450.0 Q 50.0 460.0 60.0 460.0 L 130.0 460.0" stroke="black" stroke-width="1.2" data-arrow-id="AR16" data-waypoints="330.0,200.0 370.0,200.0 370.0,290.0 50.0,290.0 50.0,460.0 130.0,460.0" marker-end="url(#arrow)" fill="none" />
+<path d="M -50.0 180.0 L 130.0 180.0" stroke="black" stroke-width="1.2" data-arrow-id="AR1" data-waypoints="-50.0,180.0 130.0,180.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 230.0 84.2 L 230.0 120.0" stroke="black" stroke-width="1.2" data-arrow-id="AR2" data-waypoints="230.0,84.2 230.0,120.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 330.0 160.0 L 360.0 160.0 Q 370.0 160.0 370.0 150.0 L 370.0 88.2 Q 370.0 78.2 380.0 78.2 L 790.0 78.2" stroke="black" stroke-width="1.2" data-arrow-id="AR4" data-waypoints="330.0,160.0 370.0,160.0 370.0,78.2 790.0,78.2" marker-end="url(#arrow)" fill="none" />
+<path d="M -50.0 40.0 L 400.0 40.0 Q 410.0 40.0 410.0 50.0 L 410.0 170.0 Q 410.0 180.0 420.0 180.0 L 450.0 180.0" stroke="black" stroke-width="1.2" data-arrow-id="AR5" data-waypoints="-50.0,40.0 410.0,40.0 410.0,180.0 450.0,180.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 550.0 84.2 L 550.0 120.0" stroke="black" stroke-width="1.2" data-arrow-id="AR6" data-waypoints="550.0,84.2 550.0,120.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 550.0 275.8 L 550.0 240.0" stroke="black" stroke-width="1.2" data-arrow-id="AR7" data-waypoints="550.0,275.8 550.0,240.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 230.0 344.2 L 230.0 380.0" stroke="black" stroke-width="1.2" data-arrow-id="AR9" data-waypoints="230.0,344.2 230.0,380.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 230.0 535.8 L 230.0 500.0" stroke="black" stroke-width="1.2" data-arrow-id="AR10" data-waypoints="230.0,535.8 230.0,500.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 550.0 344.2 L 550.0 380.0" stroke="black" stroke-width="1.2" data-arrow-id="AR12" data-waypoints="550.0,344.2 550.0,380.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 550.0 535.8 L 550.0 500.0" stroke="black" stroke-width="1.2" data-arrow-id="AR13" data-waypoints="550.0,535.8 550.0,500.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 650.0 440.0 L 790.0 440.0" stroke="black" stroke-width="1.2" data-arrow-id="AR14" data-waypoints="650.0,440.0 790.0,440.0" marker-end="url(#arrow)" fill="none" />
+<path d="M 230.0 275.8 L 230.0 240.0" stroke="black" stroke-width="1.2" data-arrow-id="_merged_A1_mechanism" data-waypoints="230.0,275.8 230.0,240.0" marker-end="url(#arrow)" fill="none" />
+<text x="230.0" y="78.2" font-size="14" text-anchor="middle" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR2">DD-8/TV-5：uid 只來自 token</text>
+<text x="544.0" y="114.0" font-size="14" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR6">identity</text>
+<text x="556.0" y="114.0" font-size="14" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR6">為空才走接回；非空則是改名</text>
+<text x="550.0" y="291.8" font-size="14" text-anchor="middle" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR7">UIDByName + auth.NewToken</text>
+<text x="224.0" y="374.0" font-size="14" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR9">MaxTokensPerUser=5，LRU</text>
+<text x="236.0" y="374.0" font-size="14" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR9">依 LastSeenAt（使用者裁示）</text>
+<text x="230.0" y="551.8" font-size="14" text-anchor="middle" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR10">writeMu 下的 validate+apply 原子區間</text>
+<text x="544.0" y="374.0" font-size="14" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR12">DD-14 寫前日誌；DD-3</text>
+<text x="556.0" y="374.0" font-size="14" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR12">v1 相容；未知版本必須回錯</text>
+<text x="550.0" y="551.8" font-size="14" text-anchor="middle" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR13">events.jsonl + snapshot.json（rename 原子性）</text>
+<text x="224.0" y="256.0" font-size="10" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR3">byToken 索引 + auth.SameTokenHash</text>
+<text x="236.0" y="256.0" font-size="10" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR3">常數時間比對、重建後的 byToken 索引供身分解析使用</text>
+<text x="390.0" y="440.0" font-size="14" font-weight="bold" fill="black" text-anchor="middle" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR11"><tspan x="390.0" dy="0">UserAddTok</tspan><tspan x="390.0" dy="16.0">enData{UID</tspan><tspan x="390.0" dy="16.0">Hash</tspan><tspan x="390.0" dy="16.0">AddedAt</tspan><tspan x="390.0" dy="16.0">EvictedHash}</tspan></text>
+<text x="230.0" y="322.0" font-size="14" font-weight="bold" fill="black" text-anchor="middle" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR8" >待新增的 TokenRef{Hash, AddedAt} 與目標 uid</text>
+<text x="20.0" y="440.0" font-size="14" font-weight="bold" fill="black" text-anchor="end" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR16" >LastSeenAt 節流更新（EvUserTouchToken）</text>
+<text x="-54.0" y="171.0" font-size="20" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR1">HTTP 請求（含</text>
+<text x="-54.0" y="197.0" font-size="20" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR1">td_token cookie）</text>
+<text x="794.0" y="69.2" font-size="20" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR4">identity{UID,</text>
+<text x="794.0" y="95.2" font-size="20" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR4">Name, Registered}</text>
+<text x="-54.0" y="18.0" font-size="20" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR5">POST /api/</text>
+<text x="-54.0" y="44.0" font-size="20" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR5">register {name}</text>
+<text x="-54.0" y="70.0" font-size="20" text-anchor="end" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR5">（無有效 cookie）</text>
+<text x="794.0" y="431.0" font-size="20" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR14">持久化狀態；重建後</text>
+<text x="794.0" y="457.0" font-size="20" text-anchor="start" font-weight="bold" fill="black" font-family="'Times New Roman', 'BiauKai', 'DFKai-SB', '標楷體', 'KaiTi', serif" data-arrow-id="AR14">的 users + byToken</text>
+</svg>

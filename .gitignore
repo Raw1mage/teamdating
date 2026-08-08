@@ -1,0 +1,14 @@
+# 執行期資料（DD-14 事件日誌與快照）
+data/
+*.jsonl
+
+# 編譯產物（單一 binary，DD-18）
+/teamdating
+/cmd/teamdating/teamdating
+
+# 開發事件日誌（specbase，本機 sqlite；fleet 慣例不進版控）
+.specbase/
+
+# 編輯器與系統雜訊
+*.swp
+.DS_Store
