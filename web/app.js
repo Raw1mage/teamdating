@@ -21,6 +21,9 @@ const S = {
 
 const PALETTE = ['#d85338','#176e5b','#c98a1a','#3f6fb0','#8046c4','#b8397f','#4e8a2f','#0f766e','#a3562b','#5c57c9'];
 const colorOf = k => { if (!k) return '#9a958b'; let h = 0; for (const c of k) h = (c.codePointAt(0) + ((h << 5) - h)) | 0; return PALETTE[Math.abs(h) % PALETTE.length]; };
+// 依背景色亮度自適應字色：淺底用深字、深底用白字（解決淺色背景配白字閱讀困難）。
+// hex → 感知亮度（WCAG 相對亮度近似），> 0.6 視為淺底。
+const inkOn = hex => { const m = /^#?([\da-f]{6})$/i.exec(hex || ''); if (!m) return '#fff'; const n = parseInt(m[1], 16), r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255; const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255; return lum > 0.6 ? '#1c1a17' : '#fff'; };
 
 // ─── 快照正規化：GET 回 options=array，SSE snapshot 回 options=map。統一成 array。 ───
 function normProposal(p) {
@@ -73,16 +76,26 @@ function route() {
 
 function render() {
   $('view-list').hidden = S.view !== 'list';
-  $('view-detail').hidden = S.view !== 'detail';
-  $('view-calendar').hidden = S.view !== 'cal';
-  // 提案專屬按鈕群（新增/分享/月曆/齒輪）現在住在全域 topbar，
-  // 列表頁無提案 context 時隱藏，只在詳情/月曆頁顯示。
-  $('head-actions').hidden = S.view === 'list';
+  // 可選項（detail）與日曆（cal）共用同一個 view-detail 殼（含共用第二 header）；
+  // 兩模式只差在下方 detail-body 內顯示哪個主體（pane-options / pane-calendar）。
+  const inProposal = S.view === 'detail' || S.view === 'cal';
+  $('view-detail').hidden = !inProposal;
+  if (inProposal) {
+    $('pane-options').hidden = S.view !== 'detail';
+    $('pane-calendar').hidden = S.view !== 'cal';
+    // 模式 class：日曆主體需要比可選項閱讀寬度更寬的容器（對齊日曆原設計寬度）。
+    $('view-detail').classList.toggle('is-cal', S.view === 'cal');
+    // 雙向切換鈕：在可選項模式顯示「📅 日曆」（點了去日曆），
+    //   在日曆模式顯示「☰ 可選項」（點了回可選項），來回切換。
+    setText($('b-mode-toggle'), S.view === 'cal' ? '☰ 可選項' : '📅 日曆');
+  }
+  // 齒輪（提案設定）只在提案內頁顯示；分享/切換已歸第二 header。
+  $('head-actions').hidden = !inProposal;
   // 返回鍵只在有上一層可回時顯示：列表頁（首頁）無得返回，故隱藏。
   $('nav-back').hidden = S.view === 'list';
   renderMe();
   if (S.view === 'list') { $('crumb').textContent = '行程統合'; loadList(); return; }
-  // 詳情頁與月曆頁都需要提案資料 + SSE；差別只在渲染哪個 view。
+  // 詳情頁與月曆頁都需要提案資料 + SSE；差別只在渲染哪個主體。
   $('crumb').textContent = S.view === 'cal' ? '月曆' : '';
   openDetail();
 }
@@ -129,7 +142,13 @@ function connectSSE() {
   const es = new EventSource(api(`/proposals/${S.route}/stream`));
   S.es = es;
   // 後端用具名事件（event: snapshot / delta / presence / cursor …）
-  es.addEventListener('snapshot', ev => { const d = JSON.parse(ev.data); S.seq = d.seq || 0; S.proposal = normProposal(d.proposal); S.presence = d.presence || []; renderDetailFull(); });
+  // ★ snapshot 會用全新物件替換 S.proposal（含 options 陣列裡每一個 o）。若當前在
+  //   月曆頁，日曆 bar 的 onclick closure 仍捕捉著 openDetail 首渲染時那批「舊 o」，
+  //   而 renderDetailFull 只重畫詳情頁、不動日曆——於是單擊改的是舊 o、
+  //   patchCalendarStance 讀的是新 o，兩者 oid 相同但不是同一物件，樂觀更新永遠
+  //   patch 不到視覺（實測：vote 有送、server 有記、bar class 停在 dim，reload 才對）。
+  //   在月曆頁時用新 S.proposal 重建日曆，讓 bar 與其 closure 都指向新 o。
+  es.addEventListener('snapshot', ev => { const d = JSON.parse(ev.data); S.seq = d.seq || 0; S.proposal = normProposal(d.proposal); S.presence = d.presence || []; renderDetailFull(); if (S.view === 'cal') renderCalendarPage(); });
   const incr = ev => { const d = JSON.parse(ev.data); applyDelta(d); };
   // ★ 這份清單必須涵蓋後端 store 的每一個 Ev* 常數。漏掉一個不會報錯——
   //   後端照送、前端沒掛、es.onmessage 對具名事件也不觸發，於是那類變更
@@ -181,6 +200,10 @@ async function applyDelta(d) {
     const fresh = normProposal(await req(`/proposals/${S.route}`));
     S.proposal = fresh;
     patchDetail();   // ← 節點級更新，不重建 DOM 樹、不動捲動位置
+    // ★ patchDetail 只碰詳情頁節點；在月曆頁時日曆 bar 的三態 class 也必須跟著重畫，
+    //   否則「別人投票」的 delta 到達後，我的日曆線條停在舊狀態直到 reload（與
+    //   snapshot 漏畫日曆同族的缺陷）。patchCalendarStance 是節點級、保留捲動位置。
+    if (S.view === 'cal') patchCalendarStance();
   } catch {}
 }
 
@@ -325,6 +348,33 @@ function patchOptions() {
   if (!opts().length && !h.querySelector('.sub')) h.append(e('p', 'sub', '還沒有可選項。'));
   renderNotVoted();
 }
+// 表態後的重繪：列表一定要 patch；若當前在月曆頁，日曆 overlay 橫條的三態
+// class 也必須跟著重畫，否則點了 bar 只有列表變、日曆線條的勾/叉/未選永遠停在
+// 舊狀態（使用者實測「打勾永遠打勾」的根因）。renderCalendarPage 自帶 scrollTop
+// 保留，在日曆頁重繪不跳位。
+function patchVotes() {
+  patchOptions();
+  if (S.view === 'cal') patchCalendarStance();
+}
+// 表態後只「節點級」改日曆 bar 的三態 class + label，絕不 replaceChildren 重建。
+// 根因（真人「要點兩下」）：renderCalendarPage 同步重建會在 click 事件派發途中
+// 銷毀被點的 bar，使 mousedown-target ≠ mouseup-target，瀏覽器判定 click 不成立，
+// onclick 不觸發（DD-12「絕不整片重建」也正是為此）。改成原地改 class 後，被點的
+// 元素恆存活，單擊必成立。
+function patchCalendarStance() {
+  const over = $('calpage-scroll'); if (!over) return;
+  calValidOpts().forEach(o => {
+    const s = myStance(o), cls = s === 1 ? 'yes' : s === 0 ? 'no' : 'dim';
+    const yesTag = `${o.yes ?? 0}人`;
+    over.querySelectorAll(`.calpage-bar[data-oid="${o.oid}"]`).forEach(bar => {
+      bar.classList.remove('yes', 'no', 'dim'); bar.classList.add(cls);
+      // 段首（data-realstart）顯示完整同款；其餘格只顯示標記＋人數。與 monthBlockPage 一致。
+      bar.textContent = bar.dataset.realstart
+        ? [stanceMark(o), yesTag, o.note || o.authorName || ''].filter(Boolean).join(' ')
+        : `${stanceMark(o)} ${yesTag}`;
+    });
+  });
+}
 function renderNotVoted() {
   // ★ 「還沒表態」問的是有沒有票列，不是有沒有投「可以」。表態不行的人
   //   已經回答過了，把他們列進待催名單等於要求他們再答一次同一題。
@@ -360,16 +410,17 @@ const calValidOpts = () => opts().filter(o =>
 
 function renderCalendarPage() {
   const p = S.proposal; if (!p) return;
-  setText($('calpage-title'), p.title || '');
+  // 日曆標題已改由共用第二 header 的 d-title 顯示；原日曆頁的 calpage-title h1 已隨 view-calendar 刪除。
   const os = calValidOpts();
   const empty = $('calpage-empty'), scroll = $('calpage-scroll');
   if (!os.length) { empty.hidden = false; scroll.replaceChildren(); return; }
   empty.hidden = true;
   const h = scroll; const keep = h.scrollTop;
   h.replaceChildren(buildCalendarPage(os));
-  // 首次進入捲到本月；增量更新保留捲動位置。
+  // 增量更新保留容器內捲動位置；首次進入「不」自動捲動——
+  // 日曆現為 view-detail 內主體，上方有 header1/header2 需置頂保留，
+  // 舊的 scrollIntoView({block:'start'}) 會捲整個文件把兩個 header 頂出畫面。
   if (keep) h.scrollTop = keep;
-  else requestAnimationFrame(() => { const t = h.querySelector(`[data-month="${ymd(new Date()).slice(0, 7)}"]`); if (t) t.scrollIntoView({ block: 'start' }); });
 }
 
 // 月曆頁自己的建構器：與內嵌 buildCalendar 同構，但 (1) 只吃已過濾的乾淨選項，
@@ -403,36 +454,78 @@ function monthBlockPage(y, m, os, lane, count, today) {
   const w = e('section', 'calpage-month'); w.dataset.month = `${y}-${String(m + 1).padStart(2, '0')}`;
   w.append(e('div', 'calpage-mtitle', `${y} 年 ${m + 1} 月`));
   const wd = e('div', 'calpage-weekdays'); ['日', '一', '二', '三', '四', '五', '六'].forEach(x => wd.append(e('div', '', x))); w.append(wd);
-  const g = e('div', 'calpage-grid'), lead = new Date(y, m, 1).getDay(), n = new Date(y, m + 1, 0).getDate();
-  for (let i = 0; i < lead; i++) g.append(e('div', 'calpage-cell pad'));
-  for (let d = 1; d <= n; d++) {
-    const ds = `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-    const cell = e('div', 'calpage-cell' + (ds === today ? ' today' : ''));
-    cell.append(e('div', 'calpage-day', String(d)));
-    const active = [];
-    os.forEach(o => { if (ds >= o.startDate && ds <= o.endDate) active.push(o); });
-    for (let i = 0; i < count; i++) {
-      const row = e('div', 'calpage-lane');
-      const o = active.find(x => lane.get(x.oid) === i);
-      if (o) {
-        // ★ 整條色塊即可點擊（不再是空白按鈕），且三態各自上色：
-        //   可以＝實色 + ✓；不行＝紅框畫叉 + ✗；未選＝淡色 + ·。
-        const s = myStance(o);
-        const cls = s === 1 ? ' yes' : s === 0 ? ' no' : ' dim';
-        const label = ds === o.startDate ? `${stanceMark(o)} ${o.note || o.authorName || ''}`.trim() : stanceMark(o);
-        const seg = e('div', `calpage-seg${cls}`, label);
-        seg.style.background = colorOf(o.authorUid);
-        seg.title = `${o.startDate} → ${o.endDate}（${days(o.startDate, o.endDate)}天）\n${o.authorName || ''} · ${o.score ?? 0} 分（可以 ${o.yes ?? 0}／不行 ${o.no ?? 0}）\n點擊循環：可以 → 不行 → 未選`;
-        seg.onclick = () => cycleStance(o);
-        row.append(seg);
-      }
-      cell.append(row);
+  // ── 週列 + overlay 橫條渲染（取代舊的逐格 seg）──
+  // 舊法逐格畫 seg，CSS grid 每格是獨立 item，seg 吃不到格間 gap → 線條斷成每日一格。
+  // 新法：逐「週列」渲染，每週一個 relative 容器；每個行程區間在它涵蓋的每週內
+  // 畫「一條」absolute 橫條（left/width 用該週佔格比例算），多日自然連成一條連續線；
+  // 跨週界時同一區間在下一週另起一段（自然斷開換行）。lane 垂直堆疊避免重疊互蓋。
+  const lead = new Date(y, m, 1).getDay(), n = new Date(y, m + 1, 0).getDate();
+  const g = e('div', 'calpage-weeks');
+  const iso = d => `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+  const LANE_H = 30, LANE_TOP = 24;   // 每條 lane 高度、日期數字下方起始位移（放寬讓多條線不擠）
+  // slot 0..(lead+n-1) 依序對應：前導空格 + 當月各日。切成每 7 個一列。
+  const totalSlots = lead + n, weeks = Math.ceil(totalSlots / 7);
+  for (let wk = 0; wk < weeks; wk++) {
+    const week = e('div', 'calpage-week');
+    const cells = e('div', 'calpage-wrow');       // 背景 7 格
+    for (let col = 0; col < 7; col++) {
+      const slot = wk * 7 + col, day = slot - lead + 1;
+      if (slot < lead || day > n) { cells.append(e('div', 'calpage-wcell pad')); continue; }
+      const ds = iso(day);
+      const c = e('div', 'calpage-wcell' + (ds === today ? ' today' : ''));
+      c.append(e('div', 'calpage-day', String(day)));
+      cells.append(c);
     }
-    g.append(cell);
+    week.append(cells);
+    // overlay：畫本週內每個區間的橫條
+    const over = e('div', 'calpage-over');
+    // 本週涵蓋的日期範圍
+    const wkFirstDay = wk * 7 - lead + 1, wkLastDay = Math.min(wkFirstDay + 6, n);
+    const wkStart = Math.max(wkFirstDay, 1);
+    os.forEach(o => {
+      // 此區間與本週的交集（用日字串比較，restrict 到當月當週）
+      const segStartDay = Math.max(wkStart, dayOfMonthOr(o.startDate, y, m, wkStart));
+      const segEndDay = Math.min(wkLastDay, dayOfMonthOr(o.endDate, y, m, wkLastDay));
+      // o 是否真的涵蓋本週任一天
+      const sFirst = iso(Math.max(wkStart, 1)), sLast = iso(wkLastDay);
+      if (o.endDate < sFirst || o.startDate > sLast) return;    // 本週無交集
+      const a = Math.max(segStartDay, wkStart), b = Math.min(segEndDay, wkLastDay);
+      if (b < a) return;
+      const startCol = (a - 1 + lead) % 7, span = b - a + 1;
+      const li = lane.get(o.oid) || 0;
+      const s = myStance(o), cls = s === 1 ? ' yes' : s === 0 ? ' no' : ' dim';
+      const bg = colorOf(o.oid);
+      const isRealStart = o.startDate >= sFirst;    // 區間真起點落在本週 → 左圓角
+      const isRealEnd = o.endDate <= sLast;         // 區間真終點落在本週 → 右圓角
+      const yesTag = `${o.yes ?? 0}人`;
+      const label = isRealStart ? [stanceMark(o), yesTag, o.note || o.authorName || ''].filter(Boolean).join(' ') : `${stanceMark(o)} ${yesTag}`;
+      const bar = e('div', `calpage-bar${cls}`, label);
+      bar.dataset.oid = o.oid;              // 穩定識別：讓 patchCalendarStance 節點級更新三態，不重建 DOM
+      bar.dataset.realstart = isRealStart ? '1' : '';   // 段首(顯示 note)才需要，patch label 時要重建同款
+      bar.style.left = `${startCol / 7 * 100}%`;
+      bar.style.width = `${span / 7 * 100}%`;
+      bar.style.top = `${LANE_TOP + li * LANE_H}px`;
+      bar.style.background = bg;
+      bar.style.color = inkOn(bg);
+      if (!isRealStart) bar.style.borderTopLeftRadius = bar.style.borderBottomLeftRadius = '0';
+      if (!isRealEnd) bar.style.borderTopRightRadius = bar.style.borderBottomRightRadius = '0';
+      bar.title = `${o.startDate} → ${o.endDate}（${days(o.startDate, o.endDate)}天）\n${o.authorName || ''} · ${o.score ?? 0} 分（可以 ${o.yes ?? 0}／不行 ${o.no ?? 0}）\n點擊循環：可以 → 不行 → 未選`;
+      bar.onclick = () => cycleStance(o);
+      over.append(bar);
+    });
+    over.style.minHeight = `${LANE_TOP + count * LANE_H + 4}px`;
+    week.append(over);
+    g.append(week);
   }
-  const used = lead + n, rest = used % 7 === 0 ? 0 : 7 - (used % 7);
-  for (let i = 0; i < rest; i++) g.append(e('div', 'calpage-cell pad'));
   w.append(g); return w;
+}
+// 把 ISO 日期字串換算成「當月的日」；不在當月則回退給定的界限值。
+function dayOfMonthOr(dateStr, y, m, fallback) {
+  const parts = (dateStr || '').split('-');
+  if (parts.length !== 3) return fallback;
+  const yy = +parts[0], mm = +parts[1] - 1, dd = +parts[2];
+  if (yy !== y || mm !== m) return fallback;
+  return dd;
 }
 
 // ─── 投票（樂觀更新 + 失敗回滾）───
@@ -452,7 +545,7 @@ async function vote(o, weight = 1) {
                    : [...prevVoters.filter(v => (v.uid || v) !== myUid()), me];
   o.myWeight = clear ? null : weight;
   recount(o);
-  patchOptions();
+  patchVotes();
   try {
     await req(`/proposals/${S.route}/votes${clear ? '/' + o.oid : ''}`, {
       method: clear ? 'DELETE' : 'POST',
@@ -460,7 +553,7 @@ async function vote(o, weight = 1) {
     });
   } catch (x) {
     o.voters = prevVoters; o.myWeight = prev; recount(o);
-    patchOptions();
+    patchVotes();
     toast('表態失敗：' + x.message, true);
   }
 }
@@ -499,9 +592,13 @@ $('b-gear').onclick = (ev) => {
 };
 // 點選單以外的任何地方收合（選單項自己的 onclick 在下方已各自 confirm+動作）
 document.addEventListener('click', ev => { if ($('gear-wrap') && !$('gear-wrap').contains(ev.target)) closeGear(); });
-// 全螢幕月曆頁：進入 / 返回。返回鍵導回同提案的詳情頁。
-$('b-open-calendar').onclick = () => { if (S.route) go(`#/p/${S.route}/cal`); };
-$('calpage-back').onclick = () => { if (S.route) go(`#/p/${S.route}`); else go('#/'); };
+// 模式雙向切換（可選項 ⇄ 日曆）：日曆模式點了回可選項，可選項模式點了去日曆。
+// 兩模式共用同一第二 header，切換只換下方主體（經 route → S.view → render）。
+// 返回上一層統一交給全域 header 的 nav-back（與可選項模式一致）。
+$('b-mode-toggle').onclick = () => {
+  if (!S.route) return;
+  go(S.view === 'cal' ? `#/p/${S.route}` : `#/p/${S.route}/cal`);
+};
 
 // 同名身分挑選：同一個名字底下有多個既有身分時，列出來讓本人認領。
 //

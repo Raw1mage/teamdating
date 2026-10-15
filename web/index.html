@@ -26,8 +26,7 @@
   <div class="topbar-right">
     <input id="me-name" type="text" maxlength="16" placeholder="輸入名字即登記…" autocomplete="off">
     <div id="head-actions" class="head-actions" hidden>
-      <button id="b-share" class="btn btn-icon btn-share" title="分享邀請連結" aria-label="分享邀請連結"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.6" x2="15.4" y2="6.4"></line><line x1="8.6" y1="13.4" x2="15.4" y2="17.6"></line></svg></button>
-      <button id="b-open-calendar" class="btn btn-accent2 btn-icon" aria-label="開全頁月曆" title="開全頁月曆"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="8" y1="2.5" x2="8" y2="6.5"></line><line x1="16" y1="2.5" x2="16" y2="6.5"></line></svg></button>
+      <!-- 分享與月曆切換已移到第二 header（.detail-head-actions）；此處只留齒輪（提案設定，非模式相關）。 -->
       <div id="gear-wrap" class="gear-wrap" hidden>
         <button id="b-gear" class="btn btn-icon btn-ghost" title="提案設定" aria-label="提案設定" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 8 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 3.6 8a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H8a1.65 1.65 0 0 0 1-1.51V2a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V8a1.65 1.65 0 0 0 1.51 1H22a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></button>
         <div id="gear-menu" class="gear-menu" hidden>
@@ -55,8 +54,10 @@
   </div>
 </main>
 
-<!-- ══════ 第二層：提案內頁 ══════ -->
+<!-- ══════ 第二層：提案內頁（可選項 / 日曆兩模式共用同一第二 header）══════ -->
 <main id="view-detail" hidden>
+  <!-- 第二 header：兩模式共用的固定殼。切換模式時此區塊完全不變，
+       只有下方 .detail-body 內的主體在「可選項卡片」與「日曆」之間切換。 -->
   <div class="detail-head">
     <div class="detail-head-inner">
       <div class="detail-head-text">
@@ -66,11 +67,18 @@
         <div id="d-meta" class="d-meta"></div>
         <p id="d-desc" class="d-desc"></p>
       </div>
+      <!-- 標題列最右側的操作鈕群：分享 + 模式切換（雙向 toggle）。
+           從全域 topbar 移來，讓提案專屬操作歸屬第二 header。 -->
+      <div class="detail-head-actions">
+        <button id="b-share" class="btn btn-icon btn-share" title="分享邀請連結" aria-label="分享邀請連結"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.6" x2="15.4" y2="6.4"></line><line x1="8.6" y1="13.4" x2="15.4" y2="17.6"></line></svg></button>
+        <button id="b-mode-toggle" class="btn btn-accent2 btn-mode-toggle" title="切換顯示模式" aria-label="切換顯示模式"></button>
+      </div>
     </div>
   </div>
 
   <div class="detail-body">
-    <aside class="pane-options">
+    <!-- 主體 A：可選項模式 -->
+    <aside id="pane-options" class="pane-options">
       <div class="card options-card">
         <div class="options-head">
           <div class="options-head-left">
@@ -86,21 +94,17 @@
         </div>
       </div>
     </aside>
-  </div>
-</main>
 
-<!-- 獨立全螢幕月曆頁（手機優先視覺化，#/p/<pid>/cal） -->
-<main id="view-calendar" hidden>
-  <div class="calpage-head">
-    <button id="calpage-back" class="btn btn-ghost calpage-back" aria-label="上一層" title="上一層"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
-    <h1 id="calpage-title" class="calpage-title"></h1>
+    <!-- 主體 B：日曆模式（原 view-calendar 的內容，移進共用殼下） -->
+    <section id="pane-calendar" class="pane-calendar" hidden>
+      <div class="calpage-legend">
+        <span>滿色＝你已投「可以」・淡色＝尚未投</span>
+        <span class="calpage-tip">點色塊即可對該可選項投「可以」</span>
+      </div>
+      <div id="calpage-empty" class="calpage-empty" hidden>還沒有任何可選項。切回可選項模式按「＋ 新增可選項」建立日期範圍。</div>
+      <div id="calpage-scroll" class="calpage-scroll"></div>
+    </section>
   </div>
-  <div class="calpage-legend">
-    <span>滿色＝你已投「可以」・淡色＝尚未投</span>
-    <span class="calpage-tip">點色塊即可對該可選項投「可以」</span>
-  </div>
-  <div id="calpage-empty" class="calpage-empty" hidden>還沒有任何可選項。回提案頁按「＋ 新增可選項」建立日期範圍。</div>
-  <div id="calpage-scroll" class="calpage-scroll"></div>
 </main>
 
 <!-- 新增提案 modal -->
